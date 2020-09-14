@@ -1,0 +1,11 @@
+application {
+	config {
+		authenticationType jwt
+		baseName spiralExpress
+		devDatabaseType postgresql
+		packageName io.spiral.express.jhipster
+		prodDatabaseType postgresql
+		nativeLanguage fr
+		languages [en, fr]
+	}
+}
