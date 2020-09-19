@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .column {
+            flex: 1 1 150px;
+        }
+
+        .row {
+            display: flex
+        }
+
+        .flex-container {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .flex-container > div {
+            width: 100px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<div style="border: solid 1px; padding: 21px;">
+
+    <span style="display: block; font-weight: bold; font-size: 25px;">Universal transit</span>
+    <div style="margin-bottom: 21px">
+        <span>Tel: (0032) 555 55 55</span>|
+        <span>Email: contact@universal-transit.com</span>|
+        <span>Site web: www.universal-transit.com</span>
+    </div>
+
+    <div class="row" style="margin-bottom: 21px">
+        <div class="column">
+            <fieldset>
+                <legend>Expéditeur</legend>
+                <span style="display: block">Nom: </span>
+                <span style="display: block">Prénom: </span>
+                <span>Adresse: </span>
+            </fieldset>
+        </div>
+
+        <div class="column">
+            <fieldset>
+                <legend>Destinataire</legend>
+                <span style="display: block">Nom: </span>
+                <span style="display: block">Prénom: </span>
+                <span>Adresse: </span>
+            </fieldset>
+        </div>
+    </div>
+
+    <div>
+        <fieldset>
+            <legend>Informations sur le coli</legend>
+            <div style="margin-bottom: 15px">
+                <span style="display: block">Date de prise en charge</span>
+                <span> 15/07/2020</span>
+            </div>
+
+
+            <div class="flex-container" style="margin-bottom: 15px">
+                <div>
+                    <span style="display: block">Nbre d'unité</span>
+                    <span>1</span><br>
+                </div>
+                <div>
+                    <span style="display: block">Poids</span>
+                    <span>5 kg</span><br>
+                </div>
+                <div>
+                    <span style="display: block">Volume</span>
+                    <span>0.90 m³</span><br>
+                </div>
+            </div>
+            <div>
+                <span style="display: block">Description du coli</span>
+                <span>Blablabla blablabla blablabla</span>
+            </div>
+
+        </fieldset>
+    </div>
+
+    <div style="margin-top: 50px">
+        <span style="display: block">56677889990006655544</span>
+        <div style="width: 300px; height: 100px; border: solid 1px;">
+            <span style="display: block">|||||||||||||||||||||||</span>
+        </div>
+    </div>
+
+    <div style="margin-top: 21px">
+        <span>Suivez votre envoi sur: www.spiral-express.com</span>
+    </div>
+
+</div>
+</body>
+</html>
