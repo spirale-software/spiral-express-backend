@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 
     <style>
-        .column {
-            flex: 1;
+        .column-1 {
+            grid-column: 1 / 2;
+            grid-row: 1;
+        }
+
+        .column-2 {
+            grid-column: 1 / 2;
+            grid-row: 1;
         }
 
         .row {
-            display: flex
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            grid-auto-rows: minmax(100px, auto);
         }
 
         .flex-container {
@@ -35,22 +44,16 @@
     </div>
 
     <div class="row" style="margin-bottom: 21px">
-        <div class="column">
-            <fieldset>
-                <legend>Expéditeur</legend>
-                <span style="display: block" >Nom: <span th:text="${expediteurNom}"></span></span>
-                <span style="display: block" th:text="${expediteurPrenom}">Prénom: </span>
+        <div class="column-1">
+                <span style="display: block" >Nom: ${expediteurNom}</span>
+                <span style="display: block">Prénom: ${expediteurPrenom}</span>
                 <span>Adresse: </span>
-            </fieldset>
         </div>
 
-        <div class="column">
-            <fieldset>
-                <legend>Destinataire</legend>
+        <div class="column-2">
                 <span style="display: block">Nom: </span>
                 <span style="display: block">Prénom: </span>
                 <span>Adresse: </span>
-            </fieldset>
         </div>
     </div>
 

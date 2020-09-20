@@ -1,6 +1,7 @@
 package io.spiral.express.app.service;
 
 
+import com.itextpdf.html2pdf.HtmlConverter;
 import io.spiral.express.app.utils.EnvoiTemplateVars;
 import io.spiral.express.app.utils.FreemarkerUtils;
 import io.spiral.express.app.utils.PdfFileUtils;
@@ -21,46 +22,34 @@ import java.util.Map;
 @Service
 public class GenerationPdf {
 
-    private final SpringTemplateEngine templateEngine;
-
-
-    public GenerationPdf(SpringTemplateEngine templateEngine) {
-        this.templateEngine = templateEngine;
-    }
-
-
-    public void genererPdfFromThymeleaf() {
-        Locale locale = Locale.forLanguageTag("fr");
-        Context context = new Context();
-        context.setVariable(EnvoiTemplateVars.EXPEDITEUR_NOM, "The best");
-        context.setVariable(EnvoiTemplateVars.EXPEDITEUR_PRENOM, "Gyle");
-        String content = templateEngine.process("envoi", context);
-
-        System.out.println(content);
-    }
-
     public void genererPdf() {
         File file = null;
         try {
-            file = ResourceUtils.getFile("classpath:templates");
+            file = ResourceUtils.getFile("classpath:templates/envoi");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         String fileName = "envoi.ftl";
-        Map<String, String> map = new HashMap<>();
-        map.put("user", "Gérard");
-        String html = FreemarkerUtils.loadFtlHtml(file, fileName, map);
+        String html = FreemarkerUtils.loadFtlHtml(file, fileName, getVariables());
 
-
-        String pdfFile = file.getPath() + "\\envoi.pdf";
+        ClassLoader classLoader = getClass().getClassLoader();
+        File pdfFile = new File(classLoader.getResource(".").getFile() + "/envoi.pdf");
         System.out.println("pdfFile: " + pdfFile);
         OutputStream out = null;
         try {
+
             out = new FileOutputStream(new File("envoi.pdf"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         PdfFileUtils.savePdf(out, html);
+    }
+
+    private Map<String, String> getVariables() {
+        Map<String, String> map = new HashMap<>();
+        map.put(EnvoiTemplateVars.EXPEDITEUR_NOM, "Yannick");
+        map.put(EnvoiTemplateVars.EXPEDITEUR_NOM, "Gérard");
+        return map;
     }
 
 }
