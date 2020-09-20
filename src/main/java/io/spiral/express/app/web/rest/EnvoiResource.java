@@ -18,23 +18,23 @@ public class EnvoiResource {
         this.envoiService = envoiService;
     }
 
-    @PostMapping("/envoi")
+    @PostMapping("/envois")
     public ResponseEntity create() {
         return null;
     }
 
-    @PutMapping("/envoi")
+    @PutMapping("/envois")
     public ResponseEntity update() {
         return null;
     }
 
-    @GetMapping("/envoi")
+    @GetMapping("/envois")
     public ResponseEntity<List<EnvoiDTO>> getAll() {
         System.out.println("La connexion fonctionne!");
         return ResponseEntity.ok(null);
     }
 
-    @GetMapping("/envoi/{envoiId}")
+    @GetMapping("/envois/{envoiId}")
     public ResponseEntity getById() {
         return null;
     }
