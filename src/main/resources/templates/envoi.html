@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -38,8 +38,8 @@
         <div class="column">
             <fieldset>
                 <legend>Expéditeur</legend>
-                <span style="display: block">Nom: </span>
-                <span style="display: block">Prénom: </span>
+                <span style="display: block" >Nom: <span th:text="${expediteurNom}"></span></span>
+                <span style="display: block" th:text="${expediteurPrenom}">Prénom: </span>
                 <span>Adresse: </span>
             </fieldset>
         </div>
