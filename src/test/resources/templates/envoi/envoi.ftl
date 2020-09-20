@@ -55,9 +55,9 @@
     </div>
 
     <div style="margin-top: 41px">
-        <span style="display: block">56677889990006655544</span>
+        <span style="display: block">${envoiReference}</span>
         <div style="width: 300px; height: 100px; border: solid 1px;">
-            <span style="display: block">|||||||||||||||||||||||</span>
+            <img src="${lienQrCode}">
         </div>
     </div>
 

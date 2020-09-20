@@ -9,8 +9,13 @@ class GenerationPdfTest {
 
 
     @Test
-    void test() {
+    void generationPdf() {
         GenerationPdf generationPdf = new GenerationPdf();
         generationPdf.genererPdf();
+    }
+
+    @Test
+    void generationQrCode() {
+        GenerationQrCode.genererQrCode();
     }
 }

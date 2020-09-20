@@ -34,6 +34,9 @@ public class GenerationPdf {
         map.put(EnvoiTemplateVars.EXPEDITEUR_NOM, "Yannick");
         map.put(EnvoiTemplateVars.EXPEDITEUR_PRENOM, "Gérard");
         map.put(EnvoiTemplateVars.EXPEDITEUR_ADRESSE, "Rue des aventuriers, 1000 Bruxelles, Belgique.");
+
+        map.put(EnvoiTemplateVars.LIEN_QR_CODE, "C:\\Users\\MediaMonster\\Desktop\\Projets\\spiral-express-backend\\src\\main\\resources\\qrcode\\qrcode-01.png");
+        map.put(EnvoiTemplateVars.ENVOI_REFERENCE, "123467985");
         return map;
     }
 
