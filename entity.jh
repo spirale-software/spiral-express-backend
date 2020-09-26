@@ -1,0 +1,56 @@
+/**
+*
+*/
+entity Coli {
+     description String
+     longueur Double
+     largeur Double
+     hauteur Double
+     poids Double
+}
+
+entity Envoi {
+    dateCreation LocalDate
+    statut StatutEnvoi
+    reference String
+    rapportQuai String
+    rapportLivraisaon String
+}
+
+entity Client {
+    numero Long
+}
+
+entity Destinataire {
+
+}
+
+entity Personne {
+    nom String
+    prenom String
+    pays String
+    adresse String
+    telephone String
+    email String
+}
+
+enum StatutEnvoi {
+    PRISE_EN_CHARGE,
+    EN_ATTENTE,
+    EN_LIVRAISON,
+    ARRIVER_ET_SCANNER_AU_DEPOT,
+    A_ENLEVER,
+    LIVRER
+}
+
+relationship OneToOne {
+    Client { personne } to Personne
+    Destinataire { personne } to Personne
+    Envoi { coli } to Coli
+    Envoi { client } to Client
+    Envoi { destinataire } to Destinataire
+}
+
+relationship OneToMany {
+    Client to Destinataire
+}
