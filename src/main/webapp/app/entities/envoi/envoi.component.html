@@ -28,8 +28,9 @@
                     <th scope="col" ><span jhiTranslate="spiralExpressApp.envoi.reference">Reference</span></th>
                     <th scope="col" ><span jhiTranslate="spiralExpressApp.envoi.rapportQuai">Rapport Quai</span></th>
                     <th scope="col" ><span jhiTranslate="spiralExpressApp.envoi.rapportLivraisaon">Rapport Livraisaon</span></th>
+                    <th scope="col" ><span jhiTranslate="spiralExpressApp.envoi.montant">Montant</span></th>
                     <th scope="col" ><span jhiTranslate="spiralExpressApp.envoi.coli">Coli</span></th>
-                    <th scope="col" ><span jhiTranslate="spiralExpressApp.envoi.client">Client</span></th>
+                    <th scope="col" ><span jhiTranslate="spiralExpressApp.envoi.expediteur">Expediteur</span></th>
                     <th scope="col" ><span jhiTranslate="spiralExpressApp.envoi.destinataire">Destinataire</span></th>
                     <th scope="col"></th>
                 </tr>
@@ -42,14 +43,15 @@
                     <td>{{ envoi.reference }}</td>
                     <td>{{ envoi.rapportQuai }}</td>
                     <td>{{ envoi.rapportLivraisaon }}</td>
+                    <td>{{ envoi.montant }}</td>
                     <td>
                         <div *ngIf="envoi.coli">
                             <a [routerLink]="['/coli', envoi.coli?.id, 'view']" >{{ envoi.coli?.id }}</a>
                         </div>
                     </td>
                     <td>
-                        <div *ngIf="envoi.client">
-                            <a [routerLink]="['/client', envoi.client?.id, 'view']" >{{ envoi.client?.id }}</a>
+                        <div *ngIf="envoi.expediteur">
+                            <a [routerLink]="['/client', envoi.expediteur?.id, 'view']" >{{ envoi.expediteur?.id }}</a>
                         </div>
                     </td>
                     <td>

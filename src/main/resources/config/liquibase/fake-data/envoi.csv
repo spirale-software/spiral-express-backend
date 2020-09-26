@@ -1,11 +1,11 @@
-id;date_creation;statut;reference;rapport_quai;rapport_livraisaon
-1;2020-09-25;LIVRER;olive;overriding Books;Cotton
-2;2020-09-25;ARRIVER_ET_SCANNER_AU_DEPOT;redundant sticky;override;Course
-3;2020-09-25;PRISE_EN_CHARGE;program Implementation Profound;Liaison cross-platform transmit;Ohio Arizona
-4;2020-09-25;EN_ATTENTE;XSS microchip Ergonomic;Money Market Account payment;Strategist Director SSL
-5;2020-09-25;A_ENLEVER;primary Kansas Architect;web services;Car
-6;2020-09-25;EN_ATTENTE;SSL RAM input;Gorgeous Granite Sausages;bypassing info-mediaries primary
-7;2020-09-26;PRISE_EN_CHARGE;Money Market Account Prairie;Croatia Cambridgeshire;Practical Rubber Hat
-8;2020-09-25;LIVRER;haptic program;Open-source;Maine protocol Granite
-9;2020-09-25;ARRIVER_ET_SCANNER_AU_DEPOT;extensible auxiliary;reboot invoice;Enterprise-wide wireless
-10;2020-09-25;EN_ATTENTE;Steel Jersey;infomediaries matrix;Legacy Fresh
+id;date_creation;statut;reference;rapport_quai;rapport_livraisaon;montant
+1;2020-09-25;LIVRER;olive;overriding Books;Cotton;91802
+2;2020-09-26;EN_ATTENTE;override;Course;feed Fantastic Avon;8280
+3;2020-09-26;LIVRER;Soft enterprise haptic;Mexican Peso Mexican Unidad de Inversion (UDI) Licensed Cotton Table;systematic;27215
+4;2020-09-25;ARRIVER_ET_SCANNER_AU_DEPOT;mobile Strategist;SSL CSS;SMS;97045
+5;2020-09-25;LIVRER;groupware Program;Awesome Fresh Salad;Minnesota Accountability;21113
+6;2020-09-25;PRISE_EN_CHARGE;Cambridgeshire;bypassing info-mediaries primary;Tasty;72205
+7;2020-09-26;ARRIVER_ET_SCANNER_AU_DEPOT;tan Paradigm;Path;Buckinghamshire magenta;51742
+8;2020-09-26;ARRIVER_ET_SCANNER_AU_DEPOT;Qatar yellow Open-source;Maine protocol Granite;Shirt knowledge base;51929
+9;2020-09-25;LIVRER;Dynamic Enterprise-wide;Tanzanian Shilling bus Customizable;Rand;31330
+10;2020-09-25;EN_LIVRAISON;matrix Personal Loan Account hack;Unbranded Metal Tuna Computer Tasty Cotton Bacon;wireless mobile cutting-edge;70408

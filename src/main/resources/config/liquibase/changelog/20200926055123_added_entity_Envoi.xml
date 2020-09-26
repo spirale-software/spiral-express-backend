@@ -30,11 +30,14 @@
             <column name="rapport_livraisaon" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="montant" type="double">
+                <constraints nullable="true" />
+            </column>
             <column name="coli_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_envoi_coli_id" />
             </column>
-            <column name="client_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_envoi_client_id" />
+            <column name="expediteur_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_envoi_expediteur_id" />
             </column>
             <column name="destinataire_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_envoi_destinataire_id" />
@@ -67,6 +70,7 @@
             <column name="reference" type="string"/>
             <column name="rapport_quai" type="string"/>
             <column name="rapport_livraisaon" type="string"/>
+            <column name="montant" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

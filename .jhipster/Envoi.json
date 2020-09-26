@@ -21,6 +21,10 @@
     {
       "fieldName": "rapportLivraisaon",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "montant",
+      "fieldType": "Double"
     }
   ],
   "relationships": [
@@ -36,7 +40,7 @@
       "relationshipType": "one-to-one",
       "otherEntityName": "client",
       "otherEntityRelationshipName": "envoi",
-      "relationshipName": "client",
+      "relationshipName": "expediteur",
       "otherEntityField": "id",
       "ownerSide": true
     },

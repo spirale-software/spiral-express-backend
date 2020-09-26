@@ -25,7 +25,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Envoi(0, currentDate, StatutEnvoi.PRISE_EN_CHARGE, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new Envoi(0, currentDate, StatutEnvoi.PRISE_EN_CHARGE, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 0);
     });
 
     describe('Service methods', () => {
@@ -75,6 +75,7 @@ describe('Service Tests', () => {
             reference: 'BBBBBB',
             rapportQuai: 'BBBBBB',
             rapportLivraisaon: 'BBBBBB',
+            montant: 1,
           },
           elemDefault
         );
@@ -101,6 +102,7 @@ describe('Service Tests', () => {
             reference: 'BBBBBB',
             rapportQuai: 'BBBBBB',
             rapportLivraisaon: 'BBBBBB',
+            montant: 1,
           },
           elemDefault
         );

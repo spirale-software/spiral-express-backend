@@ -48,7 +48,7 @@ relationship OneToOne {
     Client { personne } to Personne
     Destinataire { personne } to Personne
     Envoi { coli } to Coli
-    Envoi { client } to Client
+    Envoi { expediteur } to Client
     Envoi { destinataire } to Destinataire
 }
 

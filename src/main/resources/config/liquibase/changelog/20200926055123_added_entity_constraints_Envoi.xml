@@ -14,9 +14,9 @@
                                  referencedColumnNames="id"
                                  referencedTableName="coli"/>
 
-        <addForeignKeyConstraint baseColumnNames="client_id"
+        <addForeignKeyConstraint baseColumnNames="expediteur_id"
                                  baseTableName="envoi"
-                                 constraintName="fk_envoi_client_id"
+                                 constraintName="fk_envoi_expediteur_id"
                                  referencedColumnNames="id"
                                  referencedTableName="client"/>
 

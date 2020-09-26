@@ -28,16 +28,20 @@
                 <dd>
                     <span>{{ envoi.rapportLivraisaon }}</span>
                 </dd>
+                <dt><span jhiTranslate="spiralExpressApp.envoi.montant">Montant</span></dt>
+                <dd>
+                    <span>{{ envoi.montant }}</span>
+                </dd>
                 <dt><span jhiTranslate="spiralExpressApp.envoi.coli">Coli</span></dt>
                 <dd>
                     <div *ngIf="envoi.coli">
                         <a [routerLink]="['/coli', envoi.coli?.id, 'view']">{{ envoi.coli?.id }}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="spiralExpressApp.envoi.client">Client</span></dt>
+                <dt><span jhiTranslate="spiralExpressApp.envoi.expediteur">Expediteur</span></dt>
                 <dd>
-                    <div *ngIf="envoi.client">
-                        <a [routerLink]="['/client', envoi.client?.id, 'view']">{{ envoi.client?.id }}</a>
+                    <div *ngIf="envoi.expediteur">
+                        <a [routerLink]="['/client', envoi.expediteur?.id, 'view']">{{ envoi.expediteur?.id }}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="spiralExpressApp.envoi.destinataire">Destinataire</span></dt>

@@ -24,7 +24,7 @@ type SelectableEntity = IColi | IClient | IDestinataire;
 export class EnvoiUpdateComponent implements OnInit {
   isSaving = false;
   colis: IColi[] = [];
-  clients: IClient[] = [];
+  expediteurs: IClient[] = [];
   destinataires: IDestinataire[] = [];
   dateCreationDp: any;
 
@@ -35,8 +35,9 @@ export class EnvoiUpdateComponent implements OnInit {
     reference: [],
     rapportQuai: [],
     rapportLivraisaon: [],
+    montant: [],
     coli: [],
-    client: [],
+    expediteur: [],
     destinataire: [],
   });
 
@@ -83,17 +84,17 @@ export class EnvoiUpdateComponent implements OnInit {
           })
         )
         .subscribe((resBody: IClient[]) => {
-          if (!envoi.client || !envoi.client.id) {
-            this.clients = resBody;
+          if (!envoi.expediteur || !envoi.expediteur.id) {
+            this.expediteurs = resBody;
           } else {
             this.clientService
-              .find(envoi.client.id)
+              .find(envoi.expediteur.id)
               .pipe(
                 map((subRes: HttpResponse<IClient>) => {
                   return subRes.body ? [subRes.body].concat(resBody) : resBody;
                 })
               )
-              .subscribe((concatRes: IClient[]) => (this.clients = concatRes));
+              .subscribe((concatRes: IClient[]) => (this.expediteurs = concatRes));
           }
         });
 
@@ -129,8 +130,9 @@ export class EnvoiUpdateComponent implements OnInit {
       reference: envoi.reference,
       rapportQuai: envoi.rapportQuai,
       rapportLivraisaon: envoi.rapportLivraisaon,
+      montant: envoi.montant,
       coli: envoi.coli,
-      client: envoi.client,
+      expediteur: envoi.expediteur,
       destinataire: envoi.destinataire,
     });
   }
@@ -158,8 +160,9 @@ export class EnvoiUpdateComponent implements OnInit {
       reference: this.editForm.get(['reference'])!.value,
       rapportQuai: this.editForm.get(['rapportQuai'])!.value,
       rapportLivraisaon: this.editForm.get(['rapportLivraisaon'])!.value,
+      montant: this.editForm.get(['montant'])!.value,
       coli: this.editForm.get(['coli'])!.value,
-      client: this.editForm.get(['client'])!.value,
+      expediteur: this.editForm.get(['expediteur'])!.value,
       destinataire: this.editForm.get(['destinataire'])!.value,
     };
   }

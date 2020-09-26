@@ -21,8 +21,9 @@
       "reference": "Reference",
       "rapportQuai": "Rapport Quai",
       "rapportLivraisaon": "Rapport Livraisaon",
+      "montant": "Montant",
       "coli": "Coli",
-      "client": "Client",
+      "expediteur": "Expediteur",
       "destinataire": "Destinataire"
     }
   }

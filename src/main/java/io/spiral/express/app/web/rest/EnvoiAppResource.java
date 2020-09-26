@@ -10,11 +10,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/express")
-public class EnvoiResource {
+public class EnvoiAppResource {
 
     private final EnvoiAppService envoiAppService;
 
-    public EnvoiResource(EnvoiAppService envoiAppService) {
+    public EnvoiAppResource(EnvoiAppService envoiAppService) {
         this.envoiAppService = envoiAppService;
     }
 
@@ -30,7 +30,7 @@ public class EnvoiResource {
 
     @GetMapping("/envois")
     public ResponseEntity<List<EnvoiDTO>> getAll() {
-        return ResponseEntity.ok(envoiAppService.getAll());
+        return ResponseEntity.ok(envoiAppService.findAll());
     }
 
     @GetMapping("/envois/{envoiId}")

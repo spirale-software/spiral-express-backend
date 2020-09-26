@@ -50,7 +50,7 @@ public class Envoi implements Serializable {
 
     @OneToOne
     @JoinColumn(unique = true)
-    private Client client;
+    private Client expediteur;
 
     @OneToOne
     @JoinColumn(unique = true)
@@ -156,17 +156,17 @@ public class Envoi implements Serializable {
         this.coli = coli;
     }
 
-    public Client getClient() {
-        return client;
+    public Client getExpediteur() {
+        return expediteur;
     }
 
-    public Envoi client(Client client) {
-        this.client = client;
+    public Envoi expediteur(Client client) {
+        this.expediteur = client;
         return this;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setExpediteur(Client client) {
+        this.expediteur = client;
     }
 
     public Destinataire getDestinataire() {

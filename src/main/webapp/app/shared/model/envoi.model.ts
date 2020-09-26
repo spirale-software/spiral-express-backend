@@ -11,8 +11,9 @@ export interface IEnvoi {
   reference?: string;
   rapportQuai?: string;
   rapportLivraisaon?: string;
+  montant?: number;
   coli?: IColi;
-  client?: IClient;
+  expediteur?: IClient;
   destinataire?: IDestinataire;
 }
 
@@ -24,8 +25,9 @@ export class Envoi implements IEnvoi {
     public reference?: string,
     public rapportQuai?: string,
     public rapportLivraisaon?: string,
+    public montant?: number,
     public coli?: IColi,
-    public client?: IClient,
+    public expediteur?: IClient,
     public destinataire?: IDestinataire
   ) {}
 }
