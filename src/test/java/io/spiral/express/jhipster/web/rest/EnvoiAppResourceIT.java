@@ -30,7 +30,7 @@ import io.spiral.express.jhipster.domain.enumeration.StatutEnvoi;
 @SpringBootTest(classes = SpiralExpressApp.class)
 @AutoConfigureMockMvc
 @WithMockUser
-public class EnvoiResourceIT {
+public class EnvoiAppResourceIT {
 
     private static final LocalDate DEFAULT_DATE_CREATION = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_CREATION = LocalDate.now(ZoneId.systemDefault());
@@ -159,7 +159,7 @@ public class EnvoiResourceIT {
             .andExpect(jsonPath("$.[*].rapportLivraisaon").value(hasItem(DEFAULT_RAPPORT_LIVRAISAON)))
             .andExpect(jsonPath("$.[*].montant").value(hasItem(DEFAULT_MONTANT.doubleValue())));
     }
-    
+
     @Test
     @Transactional
     public void getEnvoi() throws Exception {
