@@ -1,0 +1,87 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="spiralExpressApp.envoi.home.title">Envois</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-envoi" [routerLink]="['/envoi/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="spiralExpressApp.envoi.home.createLabel">
+            Create a new Envoi
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="envois?.length === 0">
+        <span jhiTranslate="spiralExpressApp.envoi.home.notFound">No envois found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="envois && envois.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="spiralExpressApp.envoi.dateCreation">Date Creation</span></th>
+                    <th scope="col" ><span jhiTranslate="spiralExpressApp.envoi.statut">Statut</span></th>
+                    <th scope="col" ><span jhiTranslate="spiralExpressApp.envoi.reference">Reference</span></th>
+                    <th scope="col" ><span jhiTranslate="spiralExpressApp.envoi.rapportQuai">Rapport Quai</span></th>
+                    <th scope="col" ><span jhiTranslate="spiralExpressApp.envoi.rapportLivraisaon">Rapport Livraisaon</span></th>
+                    <th scope="col" ><span jhiTranslate="spiralExpressApp.envoi.coli">Coli</span></th>
+                    <th scope="col" ><span jhiTranslate="spiralExpressApp.envoi.client">Client</span></th>
+                    <th scope="col" ><span jhiTranslate="spiralExpressApp.envoi.destinataire">Destinataire</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let envoi of envois ;trackBy: trackId">
+                    <td><a [routerLink]="['/envoi', envoi.id, 'view']">{{ envoi.id }}</a></td>
+                    <td>{{ envoi.dateCreation | date:'mediumDate' }}</td>
+                    <td jhiTranslate="{{ 'spiralExpressApp.StatutEnvoi.' + envoi.statut }}">{{ envoi.statut }}</td>
+                    <td>{{ envoi.reference }}</td>
+                    <td>{{ envoi.rapportQuai }}</td>
+                    <td>{{ envoi.rapportLivraisaon }}</td>
+                    <td>
+                        <div *ngIf="envoi.coli">
+                            <a [routerLink]="['/coli', envoi.coli?.id, 'view']" >{{ envoi.coli?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="envoi.client">
+                            <a [routerLink]="['/client', envoi.client?.id, 'view']" >{{ envoi.client?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="envoi.destinataire">
+                            <a [routerLink]="['/destinataire', envoi.destinataire?.id, 'view']" >{{ envoi.destinataire?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/envoi', envoi.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/envoi', envoi.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(envoi)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

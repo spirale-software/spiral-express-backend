@@ -1,0 +1,26 @@
+{
+  "spiralExpressApp": {
+    "coli": {
+      "home": {
+        "title": "Colis",
+        "createLabel": "Create a new Coli",
+        "createOrEditLabel": "Create or edit a Coli",
+        "notFound": "No Colis found"
+      },
+      "created": "A new Coli is created with identifier {{ param }}",
+      "updated": "A Coli is updated with identifier {{ param }}",
+      "deleted": "A Coli is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Coli {{ id }}?"
+      },
+      "detail": {
+        "title": "Coli"
+      },
+      "description": "Description",
+      "longueur": "Longueur",
+      "largeur": "Largeur",
+      "hauteur": "Hauteur",
+      "poids": "Poids"
+    }
+  }
+}

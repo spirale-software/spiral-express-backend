@@ -1,0 +1,36 @@
+{
+  "name": "Client",
+  "fields": [
+    {
+      "fieldName": "numero",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "personne",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "personne",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "destinataire",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "destinataire"
+    }
+  ],
+  "changelogDate": "20200926055223",
+  "entityTableName": "client",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

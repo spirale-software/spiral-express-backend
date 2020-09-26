@@ -1,0 +1,29 @@
+{
+  "spiralExpressApp": {
+    "envoi": {
+      "home": {
+        "title": "Envois",
+        "createLabel": "Create a new Envoi",
+        "createOrEditLabel": "Create or edit a Envoi",
+        "notFound": "No Envois found"
+      },
+      "created": "A new Envoi is created with identifier {{ param }}",
+      "updated": "A Envoi is updated with identifier {{ param }}",
+      "deleted": "A Envoi is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Envoi {{ id }}?"
+      },
+      "detail": {
+        "title": "Envoi"
+      },
+      "dateCreation": "Date Creation",
+      "statut": "Statut",
+      "reference": "Reference",
+      "rapportQuai": "Rapport Quai",
+      "rapportLivraisaon": "Rapport Livraisaon",
+      "coli": "Coli",
+      "client": "Client",
+      "destinataire": "Destinataire"
+    }
+  }
+}

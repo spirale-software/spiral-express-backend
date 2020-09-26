@@ -1,0 +1,90 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-envoi-heading" jhiTranslate="spiralExpressApp.envoi.home.createOrEditLabel">Create or edit a Envoi</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="spiralExpressApp.envoi.dateCreation" for="field_dateCreation">Date Creation</label>
+                    <div class="input-group">
+                        <input id="field_dateCreation" type="text" class="form-control" name="dateCreation" ngbDatepicker #dateCreationDp="ngbDatepicker" formControlName="dateCreation"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateCreationDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="spiralExpressApp.envoi.statut" for="field_statut">Statut</label>
+                    <select class="form-control" name="statut" formControlName="statut" id="field_statut">
+                        <option value="PRISE_EN_CHARGE">{{ 'spiralExpressApp.StatutEnvoi.PRISE_EN_CHARGE' | translate }}</option>
+                        <option value="EN_ATTENTE">{{ 'spiralExpressApp.StatutEnvoi.EN_ATTENTE' | translate }}</option>
+                        <option value="EN_LIVRAISON">{{ 'spiralExpressApp.StatutEnvoi.EN_LIVRAISON' | translate }}</option>
+                        <option value="ARRIVER_ET_SCANNER_AU_DEPOT">{{ 'spiralExpressApp.StatutEnvoi.ARRIVER_ET_SCANNER_AU_DEPOT' | translate }}</option>
+                        <option value="A_ENLEVER">{{ 'spiralExpressApp.StatutEnvoi.A_ENLEVER' | translate }}</option>
+                        <option value="LIVRER">{{ 'spiralExpressApp.StatutEnvoi.LIVRER' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="spiralExpressApp.envoi.reference" for="field_reference">Reference</label>
+                    <input type="text" class="form-control" name="reference" id="field_reference"
+                           formControlName="reference"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="spiralExpressApp.envoi.rapportQuai" for="field_rapportQuai">Rapport Quai</label>
+                    <input type="text" class="form-control" name="rapportQuai" id="field_rapportQuai"
+                           formControlName="rapportQuai"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="spiralExpressApp.envoi.rapportLivraisaon" for="field_rapportLivraisaon">Rapport Livraisaon</label>
+                    <input type="text" class="form-control" name="rapportLivraisaon" id="field_rapportLivraisaon"
+                           formControlName="rapportLivraisaon"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="spiralExpressApp.envoi.coli" for="field_coli">Coli</label>
+                    <select class="form-control" id="field_coli" name="coli" formControlName="coli">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="coliOption.id === editForm.get('coli')!.value?.id ? editForm.get('coli')!.value : coliOption" *ngFor="let coliOption of colis; trackBy: trackById">{{ coliOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="spiralExpressApp.envoi.client" for="field_client">Client</label>
+                    <select class="form-control" id="field_client" name="client" formControlName="client">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="clientOption.id === editForm.get('client')!.value?.id ? editForm.get('client')!.value : clientOption" *ngFor="let clientOption of clients; trackBy: trackById">{{ clientOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="spiralExpressApp.envoi.destinataire" for="field_destinataire">Destinataire</label>
+                    <select class="form-control" id="field_destinataire" name="destinataire" formControlName="destinataire">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="destinataireOption.id === editForm.get('destinataire')!.value?.id ? editForm.get('destinataire')!.value : destinataireOption" *ngFor="let destinataireOption of destinataires; trackBy: trackById">{{ destinataireOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

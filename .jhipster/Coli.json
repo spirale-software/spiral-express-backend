@@ -1,0 +1,37 @@
+{
+  "name": "Coli",
+  "fields": [
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "longueur",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "largeur",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "hauteur",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "poids",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200926055023",
+  "entityTableName": "coli",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,29 @@
+{
+  "spiralExpressApp": {
+    "envoi": {
+      "home": {
+        "title": "Envois",
+        "createLabel": "Créer un nouveau Envoi",
+        "createOrEditLabel": "Créer ou éditer un Envoi",
+        "notFound": "Aucun Envoi trouvé"
+      },
+      "created": "Un nouveau Envoi a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Envoi avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Envoi avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Envoi {{ id }} ?"
+      },
+      "detail": {
+        "title": "Envoi"
+      },
+      "dateCreation": "Date Creation",
+      "statut": "Statut",
+      "reference": "Reference",
+      "rapportQuai": "Rapport Quai",
+      "rapportLivraisaon": "Rapport Livraisaon",
+      "coli": "Coli",
+      "client": "Client",
+      "destinataire": "Destinataire"
+    }
+  }
+}

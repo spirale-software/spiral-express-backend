@@ -1,0 +1,32 @@
+{
+  "name": "Destinataire",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "personne",
+      "otherEntityRelationshipName": "destinataire",
+      "relationshipName": "personne",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "client",
+      "otherEntityRelationshipName": "destinataire",
+      "relationshipName": "client",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200926055323",
+  "entityTableName": "destinataire",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
