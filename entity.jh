@@ -15,6 +15,7 @@ entity Envoi {
     reference String
     rapportQuai String
     rapportLivraisaon String
+    montant Double
 }
 
 entity Client {
