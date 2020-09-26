@@ -2,8 +2,8 @@ version: '2'
 services:
   spiralexpress-postgresql:
     image: postgres:12.3
-    # volumes:
-    #     - ~/volumes/jhipster/spiralExpress/postgresql/:/var/lib/postgresql/data/
+    volumes:
+      - ../../../../volumes/jhipster/spiralExpress/postgresql:/var/lib/postgresql
     environment:
       - POSTGRES_USER=spiralExpress
       - POSTGRES_PASSWORD=
