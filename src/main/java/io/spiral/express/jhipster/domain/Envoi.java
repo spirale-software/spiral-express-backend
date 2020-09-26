@@ -41,6 +41,9 @@ public class Envoi implements Serializable {
     @Column(name = "rapport_livraisaon")
     private String rapportLivraisaon;
 
+    @Column(name = "montant")
+    private Double montant;
+
     @OneToOne
     @JoinColumn(unique = true)
     private Coli coli;
@@ -127,6 +130,19 @@ public class Envoi implements Serializable {
         this.rapportLivraisaon = rapportLivraisaon;
     }
 
+    public Double getMontant() {
+        return montant;
+    }
+
+    public Envoi montant(Double montant) {
+        this.montant = montant;
+        return this;
+    }
+
+    public void setMontant(Double montant) {
+        this.montant = montant;
+    }
+
     public Coli getColi() {
         return coli;
     }
@@ -193,6 +209,7 @@ public class Envoi implements Serializable {
             ", reference='" + getReference() + "'" +
             ", rapportQuai='" + getRapportQuai() + "'" +
             ", rapportLivraisaon='" + getRapportLivraisaon() + "'" +
+            ", montant=" + getMontant() +
             "}";
     }
 }
