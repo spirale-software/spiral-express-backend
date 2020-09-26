@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.annotation.PostConstruct;
 import java.net.InetAddress;
@@ -22,6 +23,7 @@ import java.util.Collection;
 
 @SpringBootApplication(scanBasePackages = {"io.spiral.express.app", "io.spiral.express.jhipster"})
 @EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
+@EnableJpaRepositories(basePackages = {"io.spiral.express.app.repository"})
 public class SpiralExpressApp {
 
     private static final Logger log = LoggerFactory.getLogger(SpiralExpressApp.class);
