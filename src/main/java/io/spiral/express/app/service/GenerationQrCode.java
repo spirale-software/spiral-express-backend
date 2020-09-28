@@ -12,9 +12,8 @@ import java.io.FileOutputStream;
 
 public class GenerationQrCode {
 
-    public static void genererQrCode() {
-        String data = "14667787";
-        int size = 400;
+    public static void genererQrCode(String data) {
+        int size = 200;
 
         // encode
         BitMatrix bitMatrix = generateMatrix(data, size);

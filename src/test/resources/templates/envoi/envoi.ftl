@@ -3,66 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        .titre-section {
+            font-weight: bold;
+            font-size: 18px;
+            padding-bottom: 5px
+        }
+    </style>
 </head>
 <body>
 <div style="border: solid 1px; padding: 21px;">
 
     <span style="display: block; font-weight: bold; font-size: 25px;">Universal transit</span>
     <div style="margin-bottom: 21px">
-        <span>Tel: (0032) 555 55 55</span>|
-        <span>Email: contact@universal-transit.com</span>|
-        <span>Site web: www.universal-transit.com</span>
+        <span><strong>Tel:</strong> (+32) 555 55 55</span>|
+        <span><strong>Email:</strong> contact@universal-transit.com</span>|
+        <span><strong>Site web:</strong> www.universal-transit.com</span>
     </div>
 
     <div style="margin-bottom: 21px">
         <div style="margin-bottom: 21px">
-            <h3>Expéditeur</h3>
-            <span style="display: block">Nom: ${expediteurNom}</span>
-            <span style="display: block">Prénom: ${expediteurPrenom}</span>
-            <span>Adresse: ${expediteurAdresse}</span>
+            <span class="titre-section">Expéditeur</span>
+            <span style="display: block"><strong>Nom:</strong> ${expediteurNom}</span>
+            <span style="display: block"><strong>Prénom:</strong> ${expediteurPrenom}</span>
+            <span><strong>Adresse:</strong> ${expediteurAdresse}</span>
         </div>
 
         <div>
-            <h3>Destinataire</h3>
-            <span style="display: block">Nom: </span>
-            <span style="display: block">Prénom: </span>
-            <span>Adresse: </span>
+            <span class="titre-section">Destinataire</span>
+            <span style="display: block"><strong>Nom:</strong> ${destinataireNom}</span>
+            <span style="display: block"><strong>Prénom:</strong> ${destinatairePrenom}</span>
+            <span><strong>Adresse:</strong> ${destinataireAdresse}</span>
         </div>
     </div>
 
     <div>
-        <h3>Informations sur le coli</h3>
-        <div style="margin-bottom: 15px">
-            <span style="display: block">Date de prise en charge</span>
-            <span> 15/07/2020</span>
-        </div>
+        <span class="titre-section">Informations sur le coli</span>
+        <table>
+            <tr>
+                <th>Nbr d'unité</th>
+                <th>Poids</th>
+                <th>Volume</th>
+                <th>Description du coli</th>
+            </tr>
+            <tr>
+                <td>${coliNombreUnite}</td>
+                <td>${coliPoids} kg</td>
+                <td>${coliVolume} m³</td>
+                <td>${coliDescription}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="margin-top: 35px">
+        <span style="display: block; font-size: 41px; font-weight: bold">${envoiReference}</span>
         <div>
-            <span style="display: block">Nbre d'unité</span>
-            <span>1</span><br>
-        </div>
-        <div>
-            <span style="display: block">Poids</span>
-            <span>5 kg</span><br>
-        </div>
-        <div>
-            <span style="display: block">Volume</span>
-            <span>0.90 m³</span><br>
-        </div>
-        <div>
-            <span style="display: block">Description du coli</span>
-            <span>Blablabla blablabla blablabla</span>
+            <img src="${lienQrCode}" style="border: solid">
         </div>
     </div>
 
-    <div style="margin-top: 41px">
-        <span style="display: block">${envoiReference}</span>
-        <div style="width: 300px; height: 100px; border: solid 1px;">
-            <img src="${lienQrCode}">
-        </div>
-    </div>
-
-    <div style="margin-top: 21px">
-        <span>Suivez votre envoi sur: www.spiral-express.com</span>
+    <div style="margin-top: 25px;">
+        <p style="font-size: 18px">Suivez votre envoi sur: <strong style="text-decoration: underline">www.spiral-express.com</strong></p>
+        <span style="font-style: italic; font-size: 14px">Développer par: www.LapiEmo.com</span>
     </div>
 
 </div>
