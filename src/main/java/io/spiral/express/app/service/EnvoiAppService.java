@@ -10,4 +10,7 @@ public interface EnvoiAppService {
     List<EnvoiDTO> findAll();
 
     EnvoiDTO findById(Long id);
+
+    EnvoiDTO findByReference(String reference);
+
 }

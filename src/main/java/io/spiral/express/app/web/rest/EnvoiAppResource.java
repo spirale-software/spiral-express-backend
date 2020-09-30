@@ -45,6 +45,11 @@ public class EnvoiAppResource {
         return ResponseEntity.ok(envoiAppService.findById(envoiId));
     }
 
+    @GetMapping("/envois/{reference}/reference")
+    public ResponseEntity<EnvoiDTO> getByReference(@PathVariable String reference) {
+        return ResponseEntity.ok(envoiAppService.findByReference(reference));
+    }
+
     @GetMapping(value = "/envois/{envoiId}/generer-fiche-envoi", produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity<byte[]> genererFicheEnvoi(@PathVariable Long envoiId) {
         log.info("Requête REST, pour générer la fiche envoi: {}", envoiId);

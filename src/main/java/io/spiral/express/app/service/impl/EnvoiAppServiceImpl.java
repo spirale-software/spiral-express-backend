@@ -41,4 +41,12 @@ public class EnvoiAppServiceImpl implements EnvoiAppService {
             .map(envoiMapper::toDto)
             .orElseThrow(() -> new ElementNonExistantException("Pas d'Envoi avec cet ID: " + id));
     }
+
+    @Override
+    public EnvoiDTO findByReference(String reference) {
+        return envoiAppRepository
+            .findByReference(reference)
+            .map(envoiMapper::toDto)
+            .orElseThrow(() -> new ElementNonExistantException("Pas d'Envoi avec cette référence: " + reference));
+    }
 }
