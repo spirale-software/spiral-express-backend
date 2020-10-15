@@ -18,6 +18,10 @@ entity Envoi {
     montant Double
 }
 
+entity Partenaire {
+    numero Long
+}
+
 entity Client {
     numero Long
 }
@@ -29,10 +33,15 @@ entity Destinataire {
 entity Personne {
     nom String
     prenom String
-    pays String
-    adresse String
     telephone String
     email String
+}
+
+entity Adresse {
+    pays Pays
+    ville String
+    codePostal String
+    rue String
 }
 
 enum StatutEnvoi {
@@ -44,8 +53,17 @@ enum StatutEnvoi {
     LIVRER
 }
 
+enum Pays {
+    CAMEROUN,
+    RWANDA,
+    CONGO_BRAZZAVILLE,
+    BURKINA_FASO
+}
+
 relationship OneToOne {
+    Personne { adresse } to Adresse
     Client { personne } to Personne
+    Partenaire { personne } to Personne
     Destinataire { personne } to Personne
     Envoi { coli } to Coli
     Envoi { expediteur } to Client

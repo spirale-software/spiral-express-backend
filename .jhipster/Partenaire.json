@@ -1,0 +1,30 @@
+{
+  "name": "Partenaire",
+  "fields": [
+    {
+      "fieldName": "numero",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "personne",
+      "otherEntityRelationshipName": "partenaire",
+      "relationshipName": "personne",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20201015203920",
+  "entityTableName": "partenaire",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

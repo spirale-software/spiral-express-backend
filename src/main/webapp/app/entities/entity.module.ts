@@ -24,6 +24,14 @@ import { RouterModule } from '@angular/router';
         path: 'personne',
         loadChildren: () => import('./personne/personne.module').then(m => m.SpiralExpressPersonneModule),
       },
+      {
+        path: 'adresse',
+        loadChildren: () => import('./adresse/adresse.module').then(m => m.SpiralExpressAdresseModule),
+      },
+      {
+        path: 'partenaire',
+        loadChildren: () => import('./partenaire/partenaire.module').then(m => m.SpiralExpressPartenaireModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

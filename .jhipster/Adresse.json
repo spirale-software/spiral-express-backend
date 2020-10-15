@@ -1,0 +1,34 @@
+{
+  "name": "Adresse",
+  "fields": [
+    {
+      "fieldName": "pays",
+      "fieldType": "Pays",
+      "fieldValues": "CAMEROUN,RWANDA,CONGO_BRAZZAVILLE,BURKINA_FASO"
+    },
+    {
+      "fieldName": "ville",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codePostal",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rue",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20201015203831",
+  "entityTableName": "adresse",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -24,18 +24,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="spiralExpressApp.personne.pays" for="field_pays">Pays</label>
-                    <input type="text" class="form-control" name="pays" id="field_pays"
-                           formControlName="pays"/>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="spiralExpressApp.personne.adresse" for="field_adresse">Adresse</label>
-                    <input type="text" class="form-control" name="adresse" id="field_adresse"
-                           formControlName="adresse"/>
-                </div>
-
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="spiralExpressApp.personne.telephone" for="field_telephone">Telephone</label>
                     <input type="text" class="form-control" name="telephone" id="field_telephone"
                            formControlName="telephone"/>
@@ -45,6 +33,14 @@
                     <label class="form-control-label" jhiTranslate="spiralExpressApp.personne.email" for="field_email">Email</label>
                     <input type="text" class="form-control" name="email" id="field_email"
                            formControlName="email"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="spiralExpressApp.personne.adresse" for="field_adresse">Adresse</label>
+                    <select class="form-control" id="field_adresse" name="adresse" formControlName="adresse">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="adresseOption.id === editForm.get('adresse')!.value?.id ? editForm.get('adresse')!.value : adresseOption" *ngFor="let adresseOption of adresses; trackBy: trackById">{{ adresseOption.id }}</option>
+                    </select>
                 </div>
             </div>
 

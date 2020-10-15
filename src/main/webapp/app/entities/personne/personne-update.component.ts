@@ -4,9 +4,12 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { IPersonne, Personne } from 'app/shared/model/personne.model';
 import { PersonneService } from './personne.service';
+import { IAdresse } from 'app/shared/model/adresse.model';
+import { AdresseService } from 'app/entities/adresse/adresse.service';
 
 @Component({
   selector: 'jhi-personne-update',
@@ -14,22 +17,49 @@ import { PersonneService } from './personne.service';
 })
 export class PersonneUpdateComponent implements OnInit {
   isSaving = false;
+  adresses: IAdresse[] = [];
 
   editForm = this.fb.group({
     id: [],
     nom: [],
     prenom: [],
-    pays: [],
-    adresse: [],
     telephone: [],
     email: [],
+    adresse: [],
   });
 
-  constructor(protected personneService: PersonneService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected personneService: PersonneService,
+    protected adresseService: AdresseService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ personne }) => {
       this.updateForm(personne);
+
+      this.adresseService
+        .query({ filter: 'personne-is-null' })
+        .pipe(
+          map((res: HttpResponse<IAdresse[]>) => {
+            return res.body || [];
+          })
+        )
+        .subscribe((resBody: IAdresse[]) => {
+          if (!personne.adresse || !personne.adresse.id) {
+            this.adresses = resBody;
+          } else {
+            this.adresseService
+              .find(personne.adresse.id)
+              .pipe(
+                map((subRes: HttpResponse<IAdresse>) => {
+                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
+                })
+              )
+              .subscribe((concatRes: IAdresse[]) => (this.adresses = concatRes));
+          }
+        });
     });
   }
 
@@ -38,10 +68,9 @@ export class PersonneUpdateComponent implements OnInit {
       id: personne.id,
       nom: personne.nom,
       prenom: personne.prenom,
-      pays: personne.pays,
-      adresse: personne.adresse,
       telephone: personne.telephone,
       email: personne.email,
+      adresse: personne.adresse,
     });
   }
 
@@ -65,10 +94,9 @@ export class PersonneUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       nom: this.editForm.get(['nom'])!.value,
       prenom: this.editForm.get(['prenom'])!.value,
-      pays: this.editForm.get(['pays'])!.value,
-      adresse: this.editForm.get(['adresse'])!.value,
       telephone: this.editForm.get(['telephone'])!.value,
       email: this.editForm.get(['email'])!.value,
+      adresse: this.editForm.get(['adresse'])!.value,
     };
   }
 
@@ -86,5 +114,9 @@ export class PersonneUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IAdresse): any {
+    return item.id;
   }
 }

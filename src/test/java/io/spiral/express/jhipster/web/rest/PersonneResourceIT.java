@@ -35,12 +35,6 @@ public class PersonneResourceIT {
     private static final String DEFAULT_PRENOM = "AAAAAAAAAA";
     private static final String UPDATED_PRENOM = "BBBBBBBBBB";
 
-    private static final String DEFAULT_PAYS = "AAAAAAAAAA";
-    private static final String UPDATED_PAYS = "BBBBBBBBBB";
-
-    private static final String DEFAULT_ADRESSE = "AAAAAAAAAA";
-    private static final String UPDATED_ADRESSE = "BBBBBBBBBB";
-
     private static final String DEFAULT_TELEPHONE = "AAAAAAAAAA";
     private static final String UPDATED_TELEPHONE = "BBBBBBBBBB";
 
@@ -68,8 +62,6 @@ public class PersonneResourceIT {
         Personne personne = new Personne()
             .nom(DEFAULT_NOM)
             .prenom(DEFAULT_PRENOM)
-            .pays(DEFAULT_PAYS)
-            .adresse(DEFAULT_ADRESSE)
             .telephone(DEFAULT_TELEPHONE)
             .email(DEFAULT_EMAIL);
         return personne;
@@ -84,8 +76,6 @@ public class PersonneResourceIT {
         Personne personne = new Personne()
             .nom(UPDATED_NOM)
             .prenom(UPDATED_PRENOM)
-            .pays(UPDATED_PAYS)
-            .adresse(UPDATED_ADRESSE)
             .telephone(UPDATED_TELEPHONE)
             .email(UPDATED_EMAIL);
         return personne;
@@ -112,8 +102,6 @@ public class PersonneResourceIT {
         Personne testPersonne = personneList.get(personneList.size() - 1);
         assertThat(testPersonne.getNom()).isEqualTo(DEFAULT_NOM);
         assertThat(testPersonne.getPrenom()).isEqualTo(DEFAULT_PRENOM);
-        assertThat(testPersonne.getPays()).isEqualTo(DEFAULT_PAYS);
-        assertThat(testPersonne.getAdresse()).isEqualTo(DEFAULT_ADRESSE);
         assertThat(testPersonne.getTelephone()).isEqualTo(DEFAULT_TELEPHONE);
         assertThat(testPersonne.getEmail()).isEqualTo(DEFAULT_EMAIL);
     }
@@ -151,8 +139,6 @@ public class PersonneResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(personne.getId().intValue())))
             .andExpect(jsonPath("$.[*].nom").value(hasItem(DEFAULT_NOM)))
             .andExpect(jsonPath("$.[*].prenom").value(hasItem(DEFAULT_PRENOM)))
-            .andExpect(jsonPath("$.[*].pays").value(hasItem(DEFAULT_PAYS)))
-            .andExpect(jsonPath("$.[*].adresse").value(hasItem(DEFAULT_ADRESSE)))
             .andExpect(jsonPath("$.[*].telephone").value(hasItem(DEFAULT_TELEPHONE)))
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL)));
     }
@@ -170,8 +156,6 @@ public class PersonneResourceIT {
             .andExpect(jsonPath("$.id").value(personne.getId().intValue()))
             .andExpect(jsonPath("$.nom").value(DEFAULT_NOM))
             .andExpect(jsonPath("$.prenom").value(DEFAULT_PRENOM))
-            .andExpect(jsonPath("$.pays").value(DEFAULT_PAYS))
-            .andExpect(jsonPath("$.adresse").value(DEFAULT_ADRESSE))
             .andExpect(jsonPath("$.telephone").value(DEFAULT_TELEPHONE))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL));
     }
@@ -198,8 +182,6 @@ public class PersonneResourceIT {
         updatedPersonne
             .nom(UPDATED_NOM)
             .prenom(UPDATED_PRENOM)
-            .pays(UPDATED_PAYS)
-            .adresse(UPDATED_ADRESSE)
             .telephone(UPDATED_TELEPHONE)
             .email(UPDATED_EMAIL);
 
@@ -214,8 +196,6 @@ public class PersonneResourceIT {
         Personne testPersonne = personneList.get(personneList.size() - 1);
         assertThat(testPersonne.getNom()).isEqualTo(UPDATED_NOM);
         assertThat(testPersonne.getPrenom()).isEqualTo(UPDATED_PRENOM);
-        assertThat(testPersonne.getPays()).isEqualTo(UPDATED_PAYS);
-        assertThat(testPersonne.getAdresse()).isEqualTo(UPDATED_ADRESSE);
         assertThat(testPersonne.getTelephone()).isEqualTo(UPDATED_TELEPHONE);
         assertThat(testPersonne.getEmail()).isEqualTo(UPDATED_EMAIL);
     }

@@ -16,14 +16,6 @@
                 <dd>
                     <span>{{ personne.prenom }}</span>
                 </dd>
-                <dt><span jhiTranslate="spiralExpressApp.personne.pays">Pays</span></dt>
-                <dd>
-                    <span>{{ personne.pays }}</span>
-                </dd>
-                <dt><span jhiTranslate="spiralExpressApp.personne.adresse">Adresse</span></dt>
-                <dd>
-                    <span>{{ personne.adresse }}</span>
-                </dd>
                 <dt><span jhiTranslate="spiralExpressApp.personne.telephone">Telephone</span></dt>
                 <dd>
                     <span>{{ personne.telephone }}</span>
@@ -31,6 +23,12 @@
                 <dt><span jhiTranslate="spiralExpressApp.personne.email">Email</span></dt>
                 <dd>
                     <span>{{ personne.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="spiralExpressApp.personne.adresse">Adresse</span></dt>
+                <dd>
+                    <div *ngIf="personne.adresse">
+                        <a [routerLink]="['/adresse', personne.adresse?.id, 'view']">{{ personne.adresse?.id }}</a>
+                    </div>
                 </dd>
             </dl>
 

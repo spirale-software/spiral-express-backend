@@ -1,11 +1,12 @@
+import { IAdresse } from 'app/shared/model/adresse.model';
+
 export interface IPersonne {
   id?: number;
   nom?: string;
   prenom?: string;
-  pays?: string;
-  adresse?: string;
   telephone?: string;
   email?: string;
+  adresse?: IAdresse;
 }
 
 export class Personne implements IPersonne {
@@ -13,9 +14,8 @@ export class Personne implements IPersonne {
     public id?: number,
     public nom?: string,
     public prenom?: string,
-    public pays?: string,
-    public adresse?: string,
     public telephone?: string,
-    public email?: string
+    public email?: string,
+    public adresse?: IAdresse
   ) {}
 }

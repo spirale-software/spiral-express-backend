@@ -28,17 +28,15 @@ public class Personne implements Serializable {
     @Column(name = "prenom")
     private String prenom;
 
-    @Column(name = "pays")
-    private String pays;
-
-    @Column(name = "adresse")
-    private String adresse;
-
     @Column(name = "telephone")
     private String telephone;
 
     @Column(name = "email")
     private String email;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Adresse adresse;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -75,32 +73,6 @@ public class Personne implements Serializable {
         this.prenom = prenom;
     }
 
-    public String getPays() {
-        return pays;
-    }
-
-    public Personne pays(String pays) {
-        this.pays = pays;
-        return this;
-    }
-
-    public void setPays(String pays) {
-        this.pays = pays;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public Personne adresse(String adresse) {
-        this.adresse = adresse;
-        return this;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
     public String getTelephone() {
         return telephone;
     }
@@ -125,6 +97,19 @@ public class Personne implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public Personne adresse(Adresse adresse) {
+        this.adresse = adresse;
+        return this;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -151,8 +136,6 @@ public class Personne implements Serializable {
             "id=" + getId() +
             ", nom='" + getNom() + "'" +
             ", prenom='" + getPrenom() + "'" +
-            ", pays='" + getPays() + "'" +
-            ", adresse='" + getAdresse() + "'" +
             ", telephone='" + getTelephone() + "'" +
             ", email='" + getEmail() + "'" +
             "}";

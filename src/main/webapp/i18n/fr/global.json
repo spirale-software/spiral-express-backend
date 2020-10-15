@@ -12,6 +12,8 @@
         "client": "Client",
         "destinataire": "Destinataire",
         "personne": "Personne",
+        "adresse": "Adresse",
+        "partenaire": "Partenaire",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

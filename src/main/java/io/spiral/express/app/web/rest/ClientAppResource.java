@@ -1,7 +1,6 @@
 package io.spiral.express.app.web.rest;
 
 import io.spiral.express.app.dto.ClientDTO;
-import io.spiral.express.jhipster.domain.Client;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;

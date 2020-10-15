@@ -10,14 +10,6 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "pays",
-      "fieldType": "String"
-    },
-    {
-      "fieldName": "adresse",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "telephone",
       "fieldType": "String"
     },
@@ -26,7 +18,16 @@
       "fieldType": "String"
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "adresse",
+      "otherEntityRelationshipName": "personne",
+      "relationshipName": "adresse",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
   "changelogDate": "20200926055423",
   "entityTableName": "personne",
   "dto": "no",

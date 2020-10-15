@@ -18,10 +18,9 @@
       },
       "nom": "Nom",
       "prenom": "Prenom",
-      "pays": "Pays",
-      "adresse": "Adresse",
       "telephone": "Telephone",
-      "email": "Email"
+      "email": "Email",
+      "adresse": "Adresse"
     }
   }
 }
