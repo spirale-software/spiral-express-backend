@@ -36,11 +36,11 @@ public class GenerationPdf {
         Map<String, String> map = new HashMap<>();
         map.put(EnvoiTemplateVars.EXPEDITEUR_NOM, envoi.getExpediteur().getPersonne().getNom());
         map.put(EnvoiTemplateVars.EXPEDITEUR_PRENOM, envoi.getExpediteur().getPersonne().getPrenom());
-        map.put(EnvoiTemplateVars.EXPEDITEUR_ADRESSE, envoi.getExpediteur().getPersonne().getAdresse());
+       // map.put(EnvoiTemplateVars.EXPEDITEUR_ADRESSE, envoi.getExpediteur().getPersonne().getAdresse());
 
         map.put(EnvoiTemplateVars.DESTINATAIRE_NOM, envoi.getDestinataire().getPersonne().getNom());
         map.put(EnvoiTemplateVars.DESTINATAIRE_PRENOM, envoi.getDestinataire().getPersonne().getPrenom());
-        map.put(EnvoiTemplateVars.DESTINATAIRE_ADRESSE, envoi.getDestinataire().getPersonne().getAdresse());
+       // map.put(EnvoiTemplateVars.DESTINATAIRE_ADRESSE, envoi.getDestinataire().getPersonne().getAdresse());
 
         map.put(EnvoiTemplateVars.COLI_NBR_UNITE, "1");
         map.put(EnvoiTemplateVars.COLI_POIDS, envoi.getColi().getPoids().toString());

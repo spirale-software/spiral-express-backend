@@ -66,10 +66,10 @@ public class EnvoiRunner implements ApplicationRunner {
         Personne personne = new Personne();
         personne.setNom("Nefer");
         personne.setPrenom("Ashanti");
-        personne.setPays("Cameroun");
+       // personne.setPays("Cameroun");
         personne.setEmail("ahn@spiral.com");
         personne.setTelephone("023756699855");
-        personne.setAdresse("Douala, Km5");
+      //  personne.setAdresse("Douala, Km5");
         Client client = new Client();
         client.setNumero(456L);
         client.setPersonne(personneAppRepository.save(personne));
@@ -80,10 +80,10 @@ public class EnvoiRunner implements ApplicationRunner {
         Personne personne = new Personne();
         personne.setNom("Toutankamon");
         personne.setPrenom("Claris");
-        personne.setPays("Cameroun");
+       // personne.setPays("Cameroun");
         personne.setEmail("tna@spiral.com");
         personne.setTelephone("023756699855");
-        personne.setAdresse("Bafang, penka michel");
+       // personne.setAdresse("Bafang, penka michel");
         Destinataire destinataire = new Destinataire();
         destinataire.setPersonne(personneAppRepository.save(personne));
         destinataire.setClient(expediteur);

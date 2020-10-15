@@ -1,6 +1,7 @@
 package io.spiral.express.app.web.rest;
 
 import io.spiral.express.app.dto.ClientDTO;
+import io.spiral.express.app.service.ClientAppService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -13,16 +14,21 @@ import java.util.List;
 public class ClientAppResource {
     private Logger log = LoggerFactory.getLogger(getClass());
 
+    private final ClientAppService clientAppService;
+
+    public ClientAppResource(ClientAppService clientAppService) {
+        this.clientAppService = clientAppService;
+    }
+
     @PostMapping("clients")
     public ResponseEntity<ClientDTO> create(@RequestBody ClientDTO clientDTO) {
         log.info("Requête REST pour créer un nouveau client");
-        return null;
+        return ResponseEntity.ok(clientAppService.sauver(clientDTO));
     }
 
     @PutMapping("clients")
     public ResponseEntity<ClientDTO> update(@RequestBody ClientDTO clientDTO) {
         log.info("Requête REST pour modifier un client");
-
         return null;
     }
 
