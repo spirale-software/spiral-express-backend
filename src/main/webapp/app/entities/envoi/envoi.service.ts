@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as moment from 'moment';
 
-import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IEnvoi } from 'app/shared/model/envoi.model';
@@ -51,7 +50,7 @@ export class EnvoiService {
 
   protected convertDateFromClient(envoi: IEnvoi): IEnvoi {
     const copy: IEnvoi = Object.assign({}, envoi, {
-      dateCreation: envoi.dateCreation && envoi.dateCreation.isValid() ? envoi.dateCreation.format(DATE_FORMAT) : undefined,
+      dateCreation: envoi.dateCreation && envoi.dateCreation.isValid() ? envoi.dateCreation.toJSON() : undefined,
     });
     return copy;
   }

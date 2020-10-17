@@ -17,7 +17,7 @@
     }
   ],
   "changelogDate": "20201015203920",
-  "entityTableName": "partenaire",
+  "entityTableName": "app_partenaire",
   "dto": "no",
   "pagination": "no",
   "service": "no",

@@ -29,19 +29,18 @@ public class ClientAppResource {
     @PutMapping("clients")
     public ResponseEntity<ClientDTO> update(@RequestBody ClientDTO clientDTO) {
         log.info("Requête REST pour modifier un client");
-        return null;
+        return ResponseEntity.ok(clientAppService.modifier(clientDTO));
     }
 
     @GetMapping("clients/:id")
     public ResponseEntity<ClientDTO> getById(@PathVariable Long clientId) {
         log.info("Requête REST pour obtenir un client avec pour id: {}", clientId);
-        return null;
+        return ResponseEntity.ok(clientAppService.findById(clientId));
     }
 
     @GetMapping("clients")
     public ResponseEntity<List<ClientDTO>> getAll() {
         log.info("Requête REST pour obtenir tous les clients");
-
-        return null;
+        return ResponseEntity.ok(clientAppService.findAll().getContent());
     }
 }

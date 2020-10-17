@@ -6,11 +6,14 @@ import io.spiral.express.app.service.ClientAppService;
 import io.spiral.express.app.service.error.ElementNonExistantException;
 import io.spiral.express.app.service.mapper.ClientMapper;
 import io.spiral.express.jhipster.domain.Client;
+import org.apache.commons.lang3.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.Random;
 
 @Service
 public class ClientAppServiceImpl implements ClientAppService {
@@ -27,6 +30,7 @@ public class ClientAppServiceImpl implements ClientAppService {
     @Override
     public ClientDTO sauver(ClientDTO clientDTO) {
         log.info("Sauver un nouveau client");
+        clientDTO.setNumero(new Random().nextLong());
         Client client = clientAppRepository.save(clientMapper.toEntity(clientDTO));
         return clientMapper.toDto(client);
     }

@@ -12,7 +12,7 @@ import java.io.Serializable;
  * A Destinataire.
  */
 @Entity
-@Table(name = "destinataire")
+@Table(name = "app_destinataire")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Destinataire implements Serializable {
 

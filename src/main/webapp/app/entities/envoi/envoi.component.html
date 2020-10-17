@@ -38,7 +38,7 @@
             <tbody>
                 <tr *ngFor="let envoi of envois ;trackBy: trackId">
                     <td><a [routerLink]="['/envoi', envoi.id, 'view']">{{ envoi.id }}</a></td>
-                    <td>{{ envoi.dateCreation | date:'mediumDate' }}</td>
+                    <td>{{ envoi.dateCreation | date:'medium' }}</td>
                     <td jhiTranslate="{{ 'spiralExpressApp.StatutEnvoi.' + envoi.statut }}">{{ envoi.statut }}</td>
                     <td>{{ envoi.reference }}</td>
                     <td>{{ envoi.rapportQuai }}</td>

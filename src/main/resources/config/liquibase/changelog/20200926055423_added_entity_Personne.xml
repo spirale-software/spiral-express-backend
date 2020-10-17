@@ -11,7 +11,7 @@
         Added the entity Personne.
     -->
     <changeSet id="20200926055423-1" author="jhipster">
-        <createTable tableName="personne">
+        <createTable tableName="app_personne">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -28,7 +28,7 @@
                 <constraints nullable="true" />
             </column>
             <column name="adresse_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_personne_adresse_id" />
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_app_personne_adresse_id" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
@@ -49,9 +49,9 @@
     -->
     <changeSet id="20200926055423-1-data" author="jhipster" context="faker">
         <loadData
-                  file="config/liquibase/fake-data/personne.csv"
+                  file="config/liquibase/fake-data/app_personne.csv"
                   separator=";"
-                  tableName="personne">
+                  tableName="app_personne">
             <column name="id" type="numeric"/>
             <column name="nom" type="string"/>
             <column name="prenom" type="string"/>

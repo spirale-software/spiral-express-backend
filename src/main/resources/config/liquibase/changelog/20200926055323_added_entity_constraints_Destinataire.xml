@@ -9,16 +9,16 @@
     <changeSet id="20200926055323-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="personne_id"
-                                 baseTableName="destinataire"
-                                 constraintName="fk_destinataire_personne_id"
+                                 baseTableName="app_destinataire"
+                                 constraintName="fk_app_destinataire_personne_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="personne"/>
+                                 referencedTableName="app_personne"/>
 
         <addForeignKeyConstraint baseColumnNames="client_id"
-                                 baseTableName="destinataire"
-                                 constraintName="fk_destinataire_client_id"
+                                 baseTableName="app_destinataire"
+                                 constraintName="fk_app_destinataire_client_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="client"/>
+                                 referencedTableName="app_client"/>
 
     </changeSet>
 </databaseChangeLog>

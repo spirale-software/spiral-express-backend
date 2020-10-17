@@ -5,6 +5,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import * as moment from 'moment';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
 import { IEnvoi, Envoi } from 'app/shared/model/envoi.model';
 import { EnvoiService } from './envoi.service';
@@ -26,7 +28,6 @@ export class EnvoiUpdateComponent implements OnInit {
   colis: IColi[] = [];
   expediteurs: IClient[] = [];
   destinataires: IDestinataire[] = [];
-  dateCreationDp: any;
 
   editForm = this.fb.group({
     id: [],
@@ -52,6 +53,11 @@ export class EnvoiUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ envoi }) => {
+      if (!envoi.id) {
+        const today = moment().startOf('day');
+        envoi.dateCreation = today;
+      }
+
       this.updateForm(envoi);
 
       this.coliService
@@ -125,7 +131,7 @@ export class EnvoiUpdateComponent implements OnInit {
   updateForm(envoi: IEnvoi): void {
     this.editForm.patchValue({
       id: envoi.id,
-      dateCreation: envoi.dateCreation,
+      dateCreation: envoi.dateCreation ? envoi.dateCreation.format(DATE_TIME_FORMAT) : null,
       statut: envoi.statut,
       reference: envoi.reference,
       rapportQuai: envoi.rapportQuai,
@@ -155,7 +161,9 @@ export class EnvoiUpdateComponent implements OnInit {
     return {
       ...new Envoi(),
       id: this.editForm.get(['id'])!.value,
-      dateCreation: this.editForm.get(['dateCreation'])!.value,
+      dateCreation: this.editForm.get(['dateCreation'])!.value
+        ? moment(this.editForm.get(['dateCreation'])!.value, DATE_TIME_FORMAT)
+        : undefined,
       statut: this.editForm.get(['statut'])!.value,
       reference: this.editForm.get(['reference'])!.value,
       rapportQuai: this.editForm.get(['rapportQuai'])!.value,

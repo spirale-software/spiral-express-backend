@@ -13,8 +13,8 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
-@Component
-@Profile("dev")
+//@Component
+//@Profile("dev")
 public class EnvoiRunner implements ApplicationRunner {
 
     @Autowired
@@ -53,7 +53,7 @@ public class EnvoiRunner implements ApplicationRunner {
         envoi.setExpediteur(expediteur);
         envoi.setDestinataire(destinataire);
         envoi.setColi(coli);
-        envoi.setDateCreation(LocalDate.now());
+//        envoi.setDateCreation(LocalDate.now());
         envoi.setMontant(50.00);
         envoi.setReference("7895621459");
         envoi.setStatut(StatutEnvoi.PRISE_EN_CHARGE);

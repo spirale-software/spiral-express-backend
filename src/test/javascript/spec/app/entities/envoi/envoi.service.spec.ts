@@ -1,7 +1,7 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import * as moment from 'moment';
-import { DATE_FORMAT } from 'app/shared/constants/input.constants';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { EnvoiService } from 'app/entities/envoi/envoi.service';
 import { IEnvoi, Envoi } from 'app/shared/model/envoi.model';
 import { StatutEnvoi } from 'app/shared/model/enumerations/statut-envoi.model';
@@ -32,7 +32,7 @@ describe('Service Tests', () => {
       it('should find an element', () => {
         const returnedFromService = Object.assign(
           {
-            dateCreation: currentDate.format(DATE_FORMAT),
+            dateCreation: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -48,7 +48,7 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
-            dateCreation: currentDate.format(DATE_FORMAT),
+            dateCreation: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -70,7 +70,7 @@ describe('Service Tests', () => {
       it('should update a Envoi', () => {
         const returnedFromService = Object.assign(
           {
-            dateCreation: currentDate.format(DATE_FORMAT),
+            dateCreation: currentDate.format(DATE_TIME_FORMAT),
             statut: 'BBBBBB',
             reference: 'BBBBBB',
             rapportQuai: 'BBBBBB',
@@ -97,7 +97,7 @@ describe('Service Tests', () => {
       it('should return a list of Envoi', () => {
         const returnedFromService = Object.assign(
           {
-            dateCreation: currentDate.format(DATE_FORMAT),
+            dateCreation: currentDate.format(DATE_TIME_FORMAT),
             statut: 'BBBBBB',
             reference: 'BBBBBB',
             rapportQuai: 'BBBBBB',

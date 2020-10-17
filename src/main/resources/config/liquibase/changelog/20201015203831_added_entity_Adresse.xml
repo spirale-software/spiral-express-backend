@@ -11,7 +11,7 @@
         Added the entity Adresse.
     -->
     <changeSet id="20201015203831-1" author="jhipster">
-        <createTable tableName="adresse">
+        <createTable tableName="app_adresse">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -46,9 +46,9 @@
     -->
     <changeSet id="20201015203831-1-data" author="jhipster" context="faker">
         <loadData
-                  file="config/liquibase/fake-data/adresse.csv"
+                  file="config/liquibase/fake-data/app_adresse.csv"
                   separator=";"
-                  tableName="adresse">
+                  tableName="app_adresse">
             <column name="id" type="numeric"/>
             <column name="pays" type="string"/>
             <column name="ville" type="string"/>

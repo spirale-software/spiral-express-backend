@@ -19,7 +19,7 @@
     }
   ],
   "changelogDate": "20200926055323",
-  "entityTableName": "destinataire",
+  "entityTableName": "app_destinataire",
   "dto": "no",
   "pagination": "no",
   "service": "no",

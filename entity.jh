@@ -3,7 +3,10 @@
 */
 
 entity Entreprise(app_entreprise) {
+    dateCreation ZonedDateTime
+    dateModification ZonedDateTime
     nom String
+    numero Integer
     actif Boolean
 }
 

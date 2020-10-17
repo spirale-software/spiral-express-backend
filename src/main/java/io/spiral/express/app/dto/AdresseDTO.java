@@ -1,8 +1,10 @@
 package io.spiral.express.app.dto;
 
+import io.spiral.express.jhipster.domain.enumeration.Pays;
+
 public class AdresseDTO {
     private Long id;
-    private String pays;
+    private Pays pays;
     private String codePostal;
     private String rue;
     private String ville;
@@ -15,11 +17,11 @@ public class AdresseDTO {
         this.id = id;
     }
 
-    public String getPays() {
+    public Pays getPays() {
         return pays;
     }
 
-    public void setPays(String pays) {
+    public void setPays(Pays pays) {
         this.pays = pays;
     }
 

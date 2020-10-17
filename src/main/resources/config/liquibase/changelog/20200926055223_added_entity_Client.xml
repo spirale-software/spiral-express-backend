@@ -11,7 +11,7 @@
         Added the entity Client.
     -->
     <changeSet id="20200926055223-1" author="jhipster">
-        <createTable tableName="client">
+        <createTable tableName="app_client">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -19,7 +19,7 @@
                 <constraints nullable="true" />
             </column>
             <column name="personne_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_client_personne_id" />
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_app_client_personne_id" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
@@ -40,9 +40,9 @@
     -->
     <changeSet id="20200926055223-1-data" author="jhipster" context="faker">
         <loadData
-                  file="config/liquibase/fake-data/client.csv"
+                  file="config/liquibase/fake-data/app_client.csv"
                   separator=";"
-                  tableName="client">
+                  tableName="app_client">
             <column name="id" type="numeric"/>
             <column name="numero" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->

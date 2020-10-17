@@ -29,7 +29,7 @@
     }
   ],
   "changelogDate": "20200926055423",
-  "entityTableName": "personne",
+  "entityTableName": "app_personne",
   "dto": "no",
   "pagination": "no",
   "service": "no",

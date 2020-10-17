@@ -32,6 +32,10 @@ import { RouterModule } from '@angular/router';
         path: 'partenaire',
         loadChildren: () => import('./partenaire/partenaire.module').then(m => m.SpiralExpressPartenaireModule),
       },
+      {
+        path: 'entreprise',
+        loadChildren: () => import('./entreprise/entreprise.module').then(m => m.SpiralExpressEntrepriseModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

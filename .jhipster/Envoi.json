@@ -3,7 +3,7 @@
   "fields": [
     {
       "fieldName": "dateCreation",
-      "fieldType": "LocalDate"
+      "fieldType": "ZonedDateTime"
     },
     {
       "fieldName": "statut",
@@ -54,7 +54,7 @@
     }
   ],
   "changelogDate": "20200926055123",
-  "entityTableName": "envoi",
+  "entityTableName": "app_envoi",
   "dto": "no",
   "pagination": "no",
   "service": "no",

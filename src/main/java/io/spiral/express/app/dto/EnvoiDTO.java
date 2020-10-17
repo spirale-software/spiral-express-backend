@@ -3,10 +3,11 @@ package io.spiral.express.app.dto;
 import io.spiral.express.jhipster.domain.enumeration.StatutEnvoi;
 
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 
 public class EnvoiDTO {
     private Long id;
-    private LocalDate dateCreation;
+    private ZonedDateTime dateCreation;
     private StatutEnvoi statut;
     private String reference;
     private String rapportQuai;
@@ -24,11 +25,11 @@ public class EnvoiDTO {
         this.id = id;
     }
 
-    public LocalDate getDateCreation() {
+    public ZonedDateTime getDateCreation() {
         return dateCreation;
     }
 
-    public void setDateCreation(LocalDate dateCreation) {
+    public void setDateCreation(ZonedDateTime dateCreation) {
         this.dateCreation = dateCreation;
     }
 

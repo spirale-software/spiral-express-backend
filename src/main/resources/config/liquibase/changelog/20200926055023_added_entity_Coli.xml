@@ -11,7 +11,7 @@
         Added the entity Coli.
     -->
     <changeSet id="20200926055023-1" author="jhipster">
-        <createTable tableName="coli">
+        <createTable tableName="app_coli">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -49,9 +49,9 @@
     -->
     <changeSet id="20200926055023-1-data" author="jhipster" context="faker">
         <loadData
-                  file="config/liquibase/fake-data/coli.csv"
+                  file="config/liquibase/fake-data/app_coli.csv"
                   separator=";"
-                  tableName="coli">
+                  tableName="app_coli">
             <column name="id" type="numeric"/>
             <column name="description" type="string"/>
             <column name="longueur" type="numeric"/>

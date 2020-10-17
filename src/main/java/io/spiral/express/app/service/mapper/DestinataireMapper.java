@@ -10,7 +10,6 @@ public interface DestinataireMapper extends EntityMapper<Destinataire, Destinata
 
     @Mapping(source = "personne.nom", target = "nom")
     @Mapping(source = "personne.prenom", target = "prenom")
-    @Mapping(source = "personne.pays", target = "pays")
     @Mapping(source = "personne.adresse", target = "adresse")
     @Mapping(source = "personne.telephone", target = "telephone")
     @Mapping(source = "personne.email", target = "email")

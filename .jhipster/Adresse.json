@@ -21,7 +21,7 @@
   ],
   "relationships": [],
   "changelogDate": "20201015203831",
-  "entityTableName": "adresse",
+  "entityTableName": "app_adresse",
   "dto": "no",
   "pagination": "no",
   "service": "no",

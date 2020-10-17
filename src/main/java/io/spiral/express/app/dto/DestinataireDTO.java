@@ -5,7 +5,7 @@ public class DestinataireDTO {
     private String nom;
     private String prenom;
     private String pays;
-    private String adresse;
+    private AdresseDTO adresse;
     private String telephone;
     private String email;
     private Long clientId;
@@ -42,11 +42,11 @@ public class DestinataireDTO {
         this.pays = pays;
     }
 
-    public String getAdresse() {
+    public AdresseDTO getAdresse() {
         return adresse;
     }
 
-    public void setAdresse(String adresse) {
+    public void setAdresse(AdresseDTO adresse) {
         this.adresse = adresse;
     }
 

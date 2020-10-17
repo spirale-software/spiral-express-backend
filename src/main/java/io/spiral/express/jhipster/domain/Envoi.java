@@ -6,7 +6,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
 
 import io.spiral.express.jhipster.domain.enumeration.StatutEnvoi;
 
@@ -14,7 +14,7 @@ import io.spiral.express.jhipster.domain.enumeration.StatutEnvoi;
  * A Envoi.
  */
 @Entity
-@Table(name = "envoi")
+@Table(name = "app_envoi")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Envoi implements Serializable {
 
@@ -26,7 +26,7 @@ public class Envoi implements Serializable {
     private Long id;
 
     @Column(name = "date_creation")
-    private LocalDate dateCreation;
+    private ZonedDateTime dateCreation;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "statut")
@@ -65,16 +65,16 @@ public class Envoi implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getDateCreation() {
+    public ZonedDateTime getDateCreation() {
         return dateCreation;
     }
 
-    public Envoi dateCreation(LocalDate dateCreation) {
+    public Envoi dateCreation(ZonedDateTime dateCreation) {
         this.dateCreation = dateCreation;
         return this;
     }
 
-    public void setDateCreation(LocalDate dateCreation) {
+    public void setDateCreation(ZonedDateTime dateCreation) {
         this.dateCreation = dateCreation;
     }
 

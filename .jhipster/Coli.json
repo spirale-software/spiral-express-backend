@@ -24,7 +24,7 @@
   ],
   "relationships": [],
   "changelogDate": "20200926055023",
-  "entityTableName": "coli",
+  "entityTableName": "app_coli",
   "dto": "no",
   "pagination": "no",
   "service": "no",

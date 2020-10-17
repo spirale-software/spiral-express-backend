@@ -11,7 +11,7 @@ import java.io.Serializable;
  * A Coli.
  */
 @Entity
-@Table(name = "coli")
+@Table(name = "app_coli")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Coli implements Serializable {
 

@@ -13,7 +13,7 @@ import io.spiral.express.jhipster.domain.enumeration.Pays;
  * A Adresse.
  */
 @Entity
-@Table(name = "adresse")
+@Table(name = "app_adresse")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Adresse implements Serializable {
 

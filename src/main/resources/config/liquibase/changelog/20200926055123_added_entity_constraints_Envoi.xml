@@ -9,22 +9,22 @@
     <changeSet id="20200926055123-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="coli_id"
-                                 baseTableName="envoi"
-                                 constraintName="fk_envoi_coli_id"
+                                 baseTableName="app_envoi"
+                                 constraintName="fk_app_envoi_coli_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="coli"/>
+                                 referencedTableName="app_coli"/>
 
         <addForeignKeyConstraint baseColumnNames="expediteur_id"
-                                 baseTableName="envoi"
-                                 constraintName="fk_envoi_expediteur_id"
+                                 baseTableName="app_envoi"
+                                 constraintName="fk_app_envoi_expediteur_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="client"/>
+                                 referencedTableName="app_client"/>
 
         <addForeignKeyConstraint baseColumnNames="destinataire_id"
-                                 baseTableName="envoi"
-                                 constraintName="fk_envoi_destinataire_id"
+                                 baseTableName="app_envoi"
+                                 constraintName="fk_app_envoi_destinataire_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="destinataire"/>
+                                 referencedTableName="app_destinataire"/>
 
     </changeSet>
 </databaseChangeLog>

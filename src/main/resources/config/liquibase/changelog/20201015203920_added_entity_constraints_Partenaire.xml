@@ -9,10 +9,10 @@
     <changeSet id="20201015203920-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="personne_id"
-                                 baseTableName="partenaire"
-                                 constraintName="fk_partenaire_personne_id"
+                                 baseTableName="app_partenaire"
+                                 constraintName="fk_app_partenaire_personne_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="personne"/>
+                                 referencedTableName="app_personne"/>
 
     </changeSet>
 </databaseChangeLog>

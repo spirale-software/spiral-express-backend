@@ -23,7 +23,7 @@
     }
   ],
   "changelogDate": "20200926055223",
-  "entityTableName": "client",
+  "entityTableName": "app_client",
   "dto": "no",
   "pagination": "no",
   "service": "no",

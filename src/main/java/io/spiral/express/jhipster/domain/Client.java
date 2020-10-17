@@ -13,7 +13,7 @@ import java.util.Set;
  * A Client.
  */
 @Entity
-@Table(name = "client")
+@Table(name = "app_client")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Client implements Serializable {
 

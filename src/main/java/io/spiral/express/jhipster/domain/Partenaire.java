@@ -11,7 +11,7 @@ import java.io.Serializable;
  * A Partenaire.
  */
 @Entity
-@Table(name = "partenaire")
+@Table(name = "app_partenaire")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Partenaire implements Serializable {
 
