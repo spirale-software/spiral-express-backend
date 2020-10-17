@@ -1,6 +1,7 @@
 package io.spiral.express.app.service;
 
 import io.spiral.express.app.dto.ClientDTO;
+import org.springframework.data.domain.Page;
 
 public interface ClientAppService {
 
@@ -10,5 +11,5 @@ public interface ClientAppService {
 
     ClientDTO findById(Long id);
 
-    ClientDTO findAll();
+    Page<ClientDTO> findAll();
 }

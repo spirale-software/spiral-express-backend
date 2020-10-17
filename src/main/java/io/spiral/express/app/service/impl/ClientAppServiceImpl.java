@@ -3,10 +3,13 @@ package io.spiral.express.app.service.impl;
 import io.spiral.express.app.dto.ClientDTO;
 import io.spiral.express.app.repository.ClientAppRepository;
 import io.spiral.express.app.service.ClientAppService;
+import io.spiral.express.app.service.error.ElementNonExistantException;
 import io.spiral.express.app.service.mapper.ClientMapper;
 import io.spiral.express.jhipster.domain.Client;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -30,16 +33,26 @@ public class ClientAppServiceImpl implements ClientAppService {
 
     @Override
     public ClientDTO modifier(ClientDTO clientDTO) {
-        return null;
+        log.info("Modifier un client");
+        Client client = clientAppRepository.save(clientMapper.toEntity(clientDTO));
+        return clientMapper.toDto(client);
     }
 
     @Override
     public ClientDTO findById(Long id) {
-        return null;
+        log.info("Rechercher un client par id: {}", id);
+        return clientAppRepository
+            .findById(id)
+            .map(clientMapper::toDto)
+            .orElseThrow(() -> new ElementNonExistantException("Pas de client avec cet id: " + id));
     }
 
     @Override
-    public ClientDTO findAll() {
-        return null;
+    public Page<ClientDTO> findAll() {
+        log.info("Rechercher tous les clients");
+        Pageable pageable = Pageable.unpaged();
+        return clientAppRepository
+            .findAll(pageable)
+            .map(clientMapper::toDto);
     }
 }
