@@ -1,7 +1,13 @@
 /**
 *
 */
-entity Coli {
+
+entity Entreprise(app_entreprise) {
+    nom String
+    actif Boolean
+}
+
+entity Coli(app_coli) {
      description String
      longueur Double
      largeur Double
@@ -9,8 +15,8 @@ entity Coli {
      poids Double
 }
 
-entity Envoi {
-    dateCreation LocalDate
+entity Envoi(app_envoi) {
+    dateCreation ZonedDateTime
     statut StatutEnvoi
     reference String
     rapportQuai String
@@ -18,26 +24,26 @@ entity Envoi {
     montant Double
 }
 
-entity Partenaire {
+entity Partenaire(app_partenaire) {
     numero Long
 }
 
-entity Client {
+entity Client(app_client) {
     numero Long
 }
 
-entity Destinataire {
+entity Destinataire(app_destinataire) {
 
 }
 
-entity Personne {
+entity Personne(app_personne) {
     nom String
     prenom String
     telephone String
     email String
 }
 
-entity Adresse {
+entity Adresse(app_adresse) {
     pays Pays
     ville String
     codePostal String
