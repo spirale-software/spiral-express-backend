@@ -1,12 +1,14 @@
 package io.spiral.express.app.service.impl;
 
 import io.spiral.express.app.dto.ClientDTO;
+import io.spiral.express.app.repository.AdresseAppRepository;
 import io.spiral.express.app.repository.ClientAppRepository;
+import io.spiral.express.app.repository.PersonneAppRepository;
 import io.spiral.express.app.service.ClientAppService;
 import io.spiral.express.app.service.error.ElementNonExistantException;
 import io.spiral.express.app.service.mapper.ClientMapper;
 import io.spiral.express.jhipster.domain.Client;
-import org.apache.commons.lang3.RandomUtils;
+import io.spiral.express.jhipster.domain.Personne;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -21,17 +23,27 @@ public class ClientAppServiceImpl implements ClientAppService {
 
     private final ClientAppRepository clientAppRepository;
     private final ClientMapper clientMapper;
+    private final AdresseAppRepository adresseAppRepository;
+    private final PersonneAppRepository personneAppRepository;
 
-    public ClientAppServiceImpl(ClientAppRepository clientAppRepository, ClientMapper clientMapper) {
+    public ClientAppServiceImpl(ClientAppRepository clientAppRepository,
+                                ClientMapper clientMapper,
+                                AdresseAppRepository adresseAppRepository,
+                                PersonneAppRepository personneAppRepository) {
         this.clientAppRepository = clientAppRepository;
         this.clientMapper = clientMapper;
+        this.adresseAppRepository = adresseAppRepository;
+        this.personneAppRepository = personneAppRepository;
     }
 
     @Override
     public ClientDTO sauver(ClientDTO clientDTO) {
         log.info("Sauver un nouveau client");
         clientDTO.setNumero(new Random().nextLong());
-        Client client = clientAppRepository.save(clientMapper.toEntity(clientDTO));
+        Client client = clientMapper.toEntity(clientDTO);
+        Personne personne = personneAppRepository.save(client.getPersonne());
+        client.setPersonne(personne);
+        client = clientAppRepository.save(client);
         return clientMapper.toDto(client);
     }
 
