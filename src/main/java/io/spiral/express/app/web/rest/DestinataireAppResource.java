@@ -44,6 +44,7 @@ public class DestinataireAppResource {
 
     @GetMapping("destinataires/clients/:id")
     public ResponseEntity<List<DestinataireDTO>> getAllByClientId(@PathVariable Long clientId) {
+        log.info("Requête REST, pour obtenir les  Destinataires du client: {}", clientId);
         List<DestinataireDTO> destinataires = destinataireAppService.findAllByClientId(clientId);
         return ResponseEntity.ok(destinataires);
     }
