@@ -2,6 +2,7 @@ package io.spiral.express.app.web.rest;
 
 import io.spiral.express.app.dto.DestinataireDTO;
 import io.spiral.express.app.dto.DestinataireDTO;
+import io.spiral.express.app.service.DestinataireAppService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,12 @@ import java.util.List;
 @RequestMapping("api/express")
 public class DestinataireAppResource {
     private Logger log = LoggerFactory.getLogger(getClass());
+
+    private final DestinataireAppService destinataireAppService;
+
+    public DestinataireAppResource(DestinataireAppService destinataireAppService) {
+        this.destinataireAppService = destinataireAppService;
+    }
 
     @PostMapping("destinataires")
     public ResponseEntity<DestinataireDTO> create(@RequestBody DestinataireDTO DestinataireDTO) {

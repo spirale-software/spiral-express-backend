@@ -13,9 +13,18 @@ public interface DestinataireMapper extends EntityMapper<Destinataire, Destinata
     @Mapping(source = "personne.adresse", target = "adresse")
     @Mapping(source = "personne.telephone", target = "telephone")
     @Mapping(source = "personne.email", target = "email")
-    @Mapping(source = "client.id", target = "clientId")
+    @Mapping(source = "client.personne.id", target = "client.id")
+    @Mapping(source = "client.personne.nom", target = "client.nom")
+    @Mapping(source = "client.personne.prenom", target = "client.prenom")
     DestinataireDTO toDto(Destinataire entity);
 
-
+    @Mapping(source = "nom", target = "personne.nom")
+    @Mapping(source = "prenom", target = "personne.prenom")
+    @Mapping(source = "adresse", target = "personne.adresse")
+    @Mapping(source = "telephone", target = "personne.telephone")
+    @Mapping(source = "email", target = "personne.email")
+    @Mapping(source = "client.id", target = "personne.client.id")
+    @Mapping(source = "client.nom", target = "personne.client.nom")
+    @Mapping(source = "client.prenom", target = "personne.client.prenom")
     Destinataire toEntity(DestinataireDTO dto);
 }
