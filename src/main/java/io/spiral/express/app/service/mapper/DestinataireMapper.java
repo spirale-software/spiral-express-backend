@@ -1,11 +1,12 @@
 package io.spiral.express.app.service.mapper;
 
 import io.spiral.express.app.dto.DestinataireDTO;
+import io.spiral.express.app.service.ClientAppService;
 import io.spiral.express.jhipster.domain.Destinataire;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {MapperHelperService.class})
 public interface DestinataireMapper extends EntityMapper<Destinataire, DestinataireDTO> {
 
     @Mapping(source = "personne.nom", target = "nom")
@@ -23,8 +24,6 @@ public interface DestinataireMapper extends EntityMapper<Destinataire, Destinata
     @Mapping(source = "adresse", target = "personne.adresse")
     @Mapping(source = "telephone", target = "personne.telephone")
     @Mapping(source = "email", target = "personne.email")
-    @Mapping(source = "client.id", target = "personne.client.id")
-    @Mapping(source = "client.nom", target = "personne.client.nom")
-    @Mapping(source = "client.prenom", target = "personne.client.prenom")
+    @Mapping(source = "client.id", target = "client", qualifiedByName = "findClientById")
     Destinataire toEntity(DestinataireDTO dto);
 }

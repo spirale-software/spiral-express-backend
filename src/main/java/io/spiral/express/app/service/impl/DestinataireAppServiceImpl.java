@@ -3,11 +3,13 @@ package io.spiral.express.app.service.impl;
 import io.spiral.express.app.dto.DestinataireDTO;
 import io.spiral.express.app.repository.DestinataireAppRepository;
 import io.spiral.express.app.service.DestinataireAppService;
+import io.spiral.express.app.service.PersonneAppService;
 import io.spiral.express.app.service.mapper.DestinataireMapper;
+import io.spiral.express.jhipster.domain.Destinataire;
+import io.spiral.express.jhipster.domain.Personne;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,17 +21,24 @@ public class DestinataireAppServiceImpl implements DestinataireAppService {
 
     private final DestinataireAppRepository destinataireAppRepository;
     private final DestinataireMapper destinataireMapper;
+    private final PersonneAppService personneAppService;
 
     public DestinataireAppServiceImpl(DestinataireAppRepository destinataireAppRepository,
-                                      DestinataireMapper destinataireMapper) {
+                                      DestinataireMapper destinataireMapper,
+                                      PersonneAppService personneAppService) {
         this.destinataireAppRepository = destinataireAppRepository;
         this.destinataireMapper = destinataireMapper;
+        this.personneAppService = personneAppService;
     }
 
     @Override
     public DestinataireDTO sauver(DestinataireDTO destinataireDTO) {
         log.info("Créer un nouveau destinataire: {}", destinataireDTO);
-        return null;
+        Destinataire destinataire = destinataireMapper.toEntity(destinataireDTO);
+        Personne personne = personneAppService.sauver(destinataire.getPersonne());
+        destinataire.setPersonne(personne);
+        destinataire = destinataireAppRepository.save(destinataire);
+        return destinataireMapper.toDto(destinataire);
     }
 
     @Override
