@@ -32,7 +32,7 @@ public class DestinataireAppResource {
         return ResponseEntity.ok(destinataireAppService.modifier(destinataireDTO));
     }
 
-    @GetMapping("destinataires/:id")
+    @GetMapping("destinataires/{id}")
     public ResponseEntity<DestinataireDTO> getById(@PathVariable Long destinataireId) {
         return ResponseEntity.ok(destinataireAppService.findById(destinataireId));
     }
@@ -42,7 +42,7 @@ public class DestinataireAppResource {
         return ResponseEntity.ok(destinataireAppService.findAll().getContent());
     }
 
-    @GetMapping("destinataires/clients/:id")
+    @GetMapping("destinataires/clients/{clientId}")
     public ResponseEntity<List<DestinataireDTO>> getAllByClientId(@PathVariable Long clientId) {
         log.info("Requête REST, pour obtenir les  Destinataires du client: {}", clientId);
         List<DestinataireDTO> destinataires = destinataireAppService.findAllByClientId(clientId);

@@ -25,7 +25,7 @@ public class PartenaireAppResource {
         return null;
     }
 
-    @GetMapping("partenaires/:id")
+    @GetMapping("partenaires/{id}")
     public ResponseEntity<PartenaireDTO> getById(@PathVariable Long clientId) {
         log.info("Requête REST pour obtenir un client avec pour id: {}", clientId);
         return null;

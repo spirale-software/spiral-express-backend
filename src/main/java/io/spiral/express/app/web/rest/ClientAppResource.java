@@ -32,7 +32,7 @@ public class ClientAppResource {
         return ResponseEntity.ok(clientAppService.modifier(clientDTO));
     }
 
-    @GetMapping("clients/:id")
+    @GetMapping("clients/{id}")
     public ResponseEntity<ClientDTO> getById(@PathVariable Long clientId) {
         log.info("Requête REST pour obtenir un client avec pour id: {}", clientId);
         return ResponseEntity.ok(clientAppService.findById(clientId));
