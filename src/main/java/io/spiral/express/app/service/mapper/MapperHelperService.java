@@ -17,6 +17,9 @@ public class MapperHelperService {
 
     @Named("findClientById")
     public Client findClientById(Long clientId) {
+        if (clientId == null) {
+            throw new IllegalArgumentException("Le clientID ne doit pas être null.");
+        }
         return clientAppRepository
             .findById(clientId)
             .orElseThrow(() -> new ElementNonExistantException("Pas de client avec cet ID: " + clientId));
