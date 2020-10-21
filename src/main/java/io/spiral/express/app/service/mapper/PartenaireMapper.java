@@ -16,7 +16,7 @@ public interface PartenaireMapper extends EntityMapper<Partenaire, PartenaireDTO
     @Mapping(source = "personne.adresse", target = "adresse")
     @Mapping(source = "personne.telephone", target = "telephone")
     @Mapping(source = "personne.email", target = "email")
-    ClientDTO toDto(Client entity);
+    PartenaireDTO toDto(Partenaire entity);
 
     //    @Mapping(source = "personneId", target = "personne.id")
     @Mapping(source = "nom", target = "personne.nom")
@@ -24,5 +24,5 @@ public interface PartenaireMapper extends EntityMapper<Partenaire, PartenaireDTO
     @Mapping(source = "adresse", target = "personne.adresse")
     @Mapping(source = "telephone", target = "personne.telephone")
     @Mapping(source = "email", target = "personne.email")
-    Client toEntity(ClientDTO dto);
+    Partenaire toEntity(PartenaireDTO dto);
 }
