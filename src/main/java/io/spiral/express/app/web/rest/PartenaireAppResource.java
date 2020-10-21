@@ -1,8 +1,10 @@
 package io.spiral.express.app.web.rest;
 
 import io.spiral.express.app.dto.PartenaireDTO;
+import io.spiral.express.app.service.PartenaireAppService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,28 +15,37 @@ import java.util.List;
 public class PartenaireAppResource {
     private final Logger log = LoggerFactory.getLogger(getClass());
 
+    private final PartenaireAppService partenaireAppService;
+
+    public PartenaireAppResource(PartenaireAppService partenaireAppService) {
+        this.partenaireAppService = partenaireAppService;
+    }
+
     @PostMapping("partenaires")
-    public ResponseEntity<PartenaireDTO> create(@RequestBody PartenaireDTO PartenaireDTO) {
+    public ResponseEntity<PartenaireDTO> create(@RequestBody PartenaireDTO partenaireDTO) {
         log.info("Requête REST pour créer un nouveau client");
-        return null;
+        PartenaireDTO dto = partenaireAppService.sauver(partenaireDTO);
+        return ResponseEntity.ok(dto);
     }
 
     @PutMapping("partenaires")
-    public ResponseEntity<PartenaireDTO> update(@RequestBody PartenaireDTO PartenaireDTO) {
+    public ResponseEntity<PartenaireDTO> update(@RequestBody PartenaireDTO partenaireDTO) {
         log.info("Requête REST pour modifier un client");
-        return null;
+        PartenaireDTO dto = partenaireAppService.modifier(partenaireDTO);
+        return ResponseEntity.ok(dto);
     }
 
     @GetMapping("partenaires/{id}")
-    public ResponseEntity<PartenaireDTO> getById(@PathVariable Long clientId) {
-        log.info("Requête REST pour obtenir un client avec pour id: {}", clientId);
-        return null;
+    public ResponseEntity<PartenaireDTO> getById(@PathVariable Long partenaireId) {
+        log.info("Requête REST pour obtenir un partenaire avec pour id: {}", partenaireId);
+        PartenaireDTO dto = partenaireAppService.findById(partenaireId);
+       return ResponseEntity.ok(dto);
     }
 
     @GetMapping("partenaires")
     public ResponseEntity<List<PartenaireDTO>> getAll() {
         log.info("Requête REST pour obtenir tous les partenaires");
-
-        return null;
+        Page<PartenaireDTO> page = partenaireAppService.findAll();
+        return ResponseEntity.ok(page.getContent());
     }
 }
