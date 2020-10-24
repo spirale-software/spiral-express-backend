@@ -16,6 +16,7 @@ public class EnvoiDTO {
     private ColiDTO coli;
     private ClientDTO expediteur;
     private DestinataireDTO destinataire;
+    private PartenaireDTO partenaire;
 
     public Long getId() {
         return id;
@@ -95,5 +96,30 @@ public class EnvoiDTO {
 
     public void setDestinataire(DestinataireDTO destinataire) {
         this.destinataire = destinataire;
+    }
+
+    public PartenaireDTO getPartenaire() {
+        return partenaire;
+    }
+
+    public void setPartenaire(PartenaireDTO partenaire) {
+        this.partenaire = partenaire;
+    }
+
+    @Override
+    public String toString() {
+        return "EnvoiDTO{" +
+            "id=" + id +
+            ", dateCreation=" + dateCreation +
+            ", statut=" + statut +
+            ", reference='" + reference + '\'' +
+            ", rapportQuai='" + rapportQuai + '\'' +
+            ", rapportLivraisaon='" + rapportLivraisaon + '\'' +
+            ", montant=" + montant +
+            ", coli=" + coli +
+            ", expediteur=" + expediteur +
+            ", destinataire=" + destinataire +
+            ", partenaire=" + partenaire +
+            '}';
     }
 }

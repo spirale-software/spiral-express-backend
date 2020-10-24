@@ -7,6 +7,10 @@ import java.util.List;
 
 public interface EnvoiAppService {
 
+    EnvoiDTO create(EnvoiDTO dto);
+
+    EnvoiDTO update(EnvoiDTO dto);
+
     List<EnvoiDTO> findAll();
 
     EnvoiDTO findById(Long id);
