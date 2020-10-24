@@ -1,7 +1,6 @@
 package io.spiral.express.app.service.mapper;
 
 import io.spiral.express.app.dto.DestinataireDTO;
-import io.spiral.express.app.service.ClientAppService;
 import io.spiral.express.jhipster.domain.Destinataire;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -9,6 +8,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring", uses = {MapperHelperService.class})
 public interface DestinataireMapper extends EntityMapper<Destinataire, DestinataireDTO> {
 
+    @Mapping(source = "personne.id", target = "personneId")
     @Mapping(source = "personne.nom", target = "nom")
     @Mapping(source = "personne.prenom", target = "prenom")
     @Mapping(source = "personne.adresse", target = "adresse")
@@ -19,6 +19,7 @@ public interface DestinataireMapper extends EntityMapper<Destinataire, Destinata
     @Mapping(source = "client.personne.prenom", target = "client.prenom")
     DestinataireDTO toDto(Destinataire entity);
 
+    @Mapping(source = "personneId", target = "personne.id")
     @Mapping(source = "nom", target = "personne.nom")
     @Mapping(source = "prenom", target = "personne.prenom")
     @Mapping(source = "adresse", target = "personne.adresse")
