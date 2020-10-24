@@ -37,7 +37,7 @@ class ClientAppServiceImplT {
         ClientDTO resultat = clientAppService.sauver(dto);
 
         // THEN
-        assertNotNull(resultat.getId());
+        assertNotNull(resultat.getPersonneId());
         assertNotNull(resultat.getNumero());
         assertEquals(dto.getNom(), resultat.getNom());
         assertEquals(dto.getPrenom(), resultat.getPrenom());

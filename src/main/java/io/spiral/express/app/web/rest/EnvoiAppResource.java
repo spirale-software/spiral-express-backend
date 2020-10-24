@@ -27,26 +27,31 @@ public class EnvoiAppResource {
 
     @PostMapping("/envois")
     public ResponseEntity<EnvoiDTO> create(@RequestBody EnvoiDTO envoiDTO) {
-        return null;
+        log.info("Requête REST pour créer un nouvel envoi: {}", envoiDTO);
+        return ResponseEntity.ok(envoiAppService.create(envoiDTO));
     }
 
     @PutMapping("/envois")
     public ResponseEntity<EnvoiDTO> update(@RequestBody EnvoiDTO envoiDTO) {
-        return null;
+        log.info("Requête REST pour modifier un envoi: {}", envoiDTO);
+        return ResponseEntity.ok(envoiAppService.update(envoiDTO));
     }
 
     @GetMapping("/envois")
     public ResponseEntity<List<EnvoiDTO>> getAll() {
+        log.info("Requête REST, pour obtenir tous les envois");
         return ResponseEntity.ok(envoiAppService.findAll());
     }
 
     @GetMapping("/envois/{envoiId}")
     public ResponseEntity<EnvoiDTO> getById(@PathVariable Long envoiId) {
+        log.info("Requête REST, pour obtenir un envoi via son id: {}", envoiId);
         return ResponseEntity.ok(envoiAppService.findById(envoiId));
     }
 
     @GetMapping("/envois/{reference}/reference")
     public ResponseEntity<EnvoiDTO> getByReference(@PathVariable String reference) {
+        log.info("Requête REST, pour obtenir un envoi via sa reference: {}", reference);
         return ResponseEntity.ok(envoiAppService.findByReference(reference));
     }
 

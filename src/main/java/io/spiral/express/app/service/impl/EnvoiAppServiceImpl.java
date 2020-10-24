@@ -8,10 +8,12 @@ import io.spiral.express.app.service.error.ElementNonExistantException;
 import io.spiral.express.app.service.mapper.EnvoiMapper;
 import io.spiral.express.jhipster.domain.Coli;
 import io.spiral.express.jhipster.domain.Envoi;
+import io.spiral.express.jhipster.domain.enumeration.StatutEnvoi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Random;
 
@@ -34,10 +36,10 @@ public class EnvoiAppServiceImpl implements EnvoiAppService {
     public EnvoiDTO create(EnvoiDTO dto) {
         log.info("Créer un nouvel envoi: {}", dto);
 
-        if (dto.getExpediteur() == null || dto.getExpediteur().getId() == null) {
+        if (dto.getExpediteur() == null || dto.getExpediteur().getPersonneId() == null) {
             System.out.println("L'expéditeur ne peut être null.");
         }
-        if (dto.getDestinataire() == null || dto.getDestinataire().getId() == null) {
+        if (dto.getDestinataire() == null || dto.getDestinataire().getPersonneId() == null) {
             System.out.println("Le destinataire ne peut être null.");
         }
 
@@ -45,6 +47,8 @@ public class EnvoiAppServiceImpl implements EnvoiAppService {
         Envoi envoi = envoiMapper.toEntity(dto);
         envoi.setColi(coli);
         envoi.setReference(String.valueOf(new Random().nextLong()));
+        envoi.setStatut(StatutEnvoi.PRISE_EN_CHARGE);
+        envoi.setDateCreation(ZonedDateTime.now());
         envoi = envoiAppRepository.save(envoi);
 
         return envoiMapper.toDto(envoi);

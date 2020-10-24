@@ -1,19 +1,19 @@
 package io.spiral.express.app.dto;
 
 public class PersonneDTO {
-    private Long id;
+    private Long personneId;
     private String nom;
     private String prenom;
     private AdresseDTO adresse;
     private String telephone;
     private String email;
 
-    public Long getId() {
-        return id;
+    public Long getPersonneId() {
+        return personneId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPersonneId(Long personneId) {
+        this.personneId = personneId;
     }
 
     public String getNom() {
