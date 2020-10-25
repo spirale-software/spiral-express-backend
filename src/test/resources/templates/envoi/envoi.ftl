@@ -14,6 +14,11 @@
             font-size: 18px;
             padding-bottom: 5px
         }
+
+        table.c {
+            table-layout: auto;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -26,21 +31,52 @@
         <span><strong>Site web:</strong> www.universal-transit.com</span>
     </div>
 
-    <div style="margin-bottom: 21px">
-        <div style="margin-bottom: 21px">
-            <span class="titre-section">Expéditeur</span>
-            <span style="display: block"><strong>Nom:</strong> ${expediteurNom}</span>
-            <span style="display: block"><strong>Prénom:</strong> ${expediteurPrenom}</span>
-            <span><strong>Adresse:</strong> ${expediteurAdresse}</span>
-        </div>
+<#--    <div style="margin-bottom: 21px">-->
+<#--        <div style="margin-bottom: 21px">-->
+<#--            <span class="titre-section">Expéditeur</span>-->
+<#--            <span style="display: block"><strong>Nom:</strong> ${expediteurNom}</span>-->
+<#--            <span style="display: block"><strong>Prénom:</strong> ${expediteurPrenom}</span>-->
+<#--            <span><strong>Adresse:</strong> ${expediteurAdresse}</span>-->
+<#--        </div>-->
 
-        <div>
-            <span class="titre-section">Destinataire</span>
-            <span style="display: block"><strong>Nom:</strong> ${destinataireNom}</span>
-            <span style="display: block"><strong>Prénom:</strong> ${destinatairePrenom}</span>
-            <span><strong>Adresse:</strong> ${destinataireAdresse}</span>
-        </div>
+<#--        <div>-->
+<#--            <span class="titre-section">Destinataire</span>-->
+<#--            <span style="display: block"><strong>Nom:</strong> ${destinataireNom}</span>-->
+<#--            <span style="display: block"><strong>Prénom:</strong> ${destinatairePrenom}</span>-->
+<#--            <span><strong>Adresse:</strong> ${destinataireAdresse}</span>-->
+<#--        </div>-->
+<#--    </div>-->
+
+
+
+    <div style="margin-bottom: 21px">
+        <table class="c">
+            <tr>
+                <th>Expéditeur</th>
+                <th>Destinataire</th>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <span style="display: block"><strong>Nom:</strong> ${expediteurNom}</span>
+                        <span style="display: block"><strong>Prénom:</strong> ${expediteurPrenom}</span>
+                        <span><strong>Adresse:</strong> ${expediteurAdresse}</span>
+                    </div>
+                </td>
+
+                <td>
+                    <div>
+                        <span style="display: block"><strong>Nom:</strong> ${destinataireNom}</span>
+                        <span style="display: block"><strong>Prénom:</strong> ${destinatairePrenom}</span>
+                        <span><strong>Adresse:</strong> ${destinataireAdresse}</span>
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
+
+
+
 
     <div>
         <span class="titre-section">Informations sur le coli</span>
