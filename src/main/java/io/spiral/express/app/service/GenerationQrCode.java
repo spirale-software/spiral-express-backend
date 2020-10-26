@@ -12,17 +12,17 @@ import java.io.FileOutputStream;
 
 public class GenerationQrCode {
 
-    public static void genererQrCode(String data) {
-        int size = 200;
+    public static void genererQrCode(String data, String outputFileName) {
+        final int SIZE = 200;
+        final String IMAGE_FORMAT = "png";
 
         // encode
-        BitMatrix bitMatrix = generateMatrix(data, size);
+        BitMatrix bitMatrix = generateMatrix(data, SIZE);
 
-        String imageFormat = "png";
-        String outputFileName = "C:\\Users\\MediaMonster\\Desktop\\Projets\\spiral-express-backend\\src\\main\\resources\\qrcode\\qrcode-01." + imageFormat;
+        outputFileName = new StringBuilder().append(outputFileName).append(".").append(IMAGE_FORMAT).toString();
 
         // write in a file
-        writeImage(outputFileName, imageFormat, bitMatrix);
+        writeImage(outputFileName, IMAGE_FORMAT, bitMatrix);
     }
 
     private static BitMatrix generateMatrix(String data, int size) {

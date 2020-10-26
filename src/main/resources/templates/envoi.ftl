@@ -26,9 +26,11 @@
 
     <span style="display: block; font-weight: bold; font-size: 25px;">Universal transit</span>
     <div style="margin-bottom: 21px">
-        <span><strong>Tel:</strong> (+32) 555 55 55</span>|
-        <span><strong>Email:</strong> contact@universal-transit.com</span>|
-        <span><strong>Site web:</strong> www.universal-transit.com</span>
+        <span>(+32) 555 55 55</span>
+        <span style="padding-left: 3px; padding-right: 3px">|</span>
+        <span>contact@universal-transit.com</span>
+        <span style="padding-left: 3px; padding-right: 3px">|</span>
+        <span>www.universal-transit.com</span>
     </div>
 
     <#--    <div style="margin-bottom: 21px">-->
@@ -49,6 +51,34 @@
 
 
 
+<#--    <div style="margin-bottom: 21px">-->
+<#--        <table class="c">-->
+<#--            <tr>-->
+<#--                <th>Expéditeur</th>-->
+<#--                <th>Destinataire</th>-->
+<#--            </tr>-->
+<#--            <tr>-->
+<#--                <td>-->
+<#--                    <div>-->
+<#--                        <span style="display: block"><strong>Nom:</strong> ${expediteurNom}</span>-->
+<#--                        <span style="display: block"><strong>Prénom:</strong> ${expediteurPrenom}</span>-->
+<#--                        <span><strong>Adresse:</strong> ${expediteurAdresse}</span>-->
+<#--                    </div>-->
+<#--                </td>-->
+
+<#--                <td>-->
+<#--                    <div>-->
+<#--                        <span style="display: block"><strong>Nom:</strong> ${destinataireNom}</span>-->
+<#--                        <span style="display: block"><strong>Prénom:</strong> ${destinatairePrenom}</span>-->
+<#--                        <span><strong>Adresse:</strong> ${destinataireAdresse}</span>-->
+<#--                    </div>-->
+<#--                </td>-->
+<#--            </tr>-->
+<#--        </table>-->
+<#--    </div>-->
+
+
+
     <div style="margin-bottom: 21px">
         <table class="c">
             <tr>
@@ -58,17 +88,17 @@
             <tr>
                 <td>
                     <div>
-                        <span style="display: block"><strong>Nom:</strong> ${expediteurNom}</span>
-                        <span style="display: block"><strong>Prénom:</strong> ${expediteurPrenom}</span>
-                        <span><strong>Adresse:</strong> ${expediteurAdresse}</span>
+                        <span style="display: block; padding-bottom: 11px">${expediteurFullName}</span>
+                        <span style="display: block">${expediteurAdresse1}</span>
+                        <span style="display: block">${expediteurAdresse2}</span>
                     </div>
                 </td>
 
                 <td>
                     <div>
-                        <span style="display: block"><strong>Nom:</strong> ${destinataireNom}</span>
-                        <span style="display: block"><strong>Prénom:</strong> ${destinatairePrenom}</span>
-                        <span><strong>Adresse:</strong> ${destinataireAdresse}</span>
+                        <span style="display: block; padding-bottom: 11px">${destinataireFullName}</span>
+                        <span style="display: block">${destinataireAdresse1}</span>
+                        <span style="display: block">${destinataireAdresse2}</span>
                     </div>
                 </td>
             </tr>

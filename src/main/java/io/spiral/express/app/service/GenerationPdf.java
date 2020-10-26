@@ -31,7 +31,7 @@ public class GenerationPdf {
     }
 
     private Map<String, String> getVariables(Envoi envoi) {
-        GenerationQrCode.genererQrCode(envoi.getReference());
+        GenerationQrCode.genererQrCode(envoi.getReference(), "");
 
         Map<String, String> map = new HashMap<>();
         map.put(EnvoiTemplateVars.EXPEDITEUR_NOM, envoi.getExpediteur().getPersonne().getNom());

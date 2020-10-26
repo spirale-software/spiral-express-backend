@@ -7,7 +7,9 @@ import io.spiral.express.app.service.GenerationQrCode;
 import io.spiral.express.app.service.error.ElementNonExistantException;
 import io.spiral.express.app.utils.EnvoiTemplateVars;
 import io.spiral.express.app.utils.FreemarkerUtils;
+import io.spiral.express.jhipster.domain.Adresse;
 import io.spiral.express.jhipster.domain.Envoi;
+import io.spiral.express.jhipster.domain.Personne;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -58,16 +60,28 @@ public class GenerationFicheEnvoiAppServiceAppImpl implements GenerationFicheEnv
     }
 
     private Map<String, String> getVariables(Envoi envoi) {
-        GenerationQrCode.genererQrCode(envoi.getReference());
+        File qrCodeFile = null;
+        try {
+            qrCodeFile = ResourceUtils.getFile("classpath:qrcode/qrcode-01.png");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        GenerationQrCode.genererQrCode(envoi.getReference(), qrCodeFile.getPath());
 
         Map<String, String> map = new HashMap<>();
-        map.put(EnvoiTemplateVars.EXPEDITEUR_NOM, envoi.getExpediteur().getPersonne().getNom());
-        map.put(EnvoiTemplateVars.EXPEDITEUR_PRENOM, envoi.getExpediteur().getPersonne().getPrenom());
+//        map.put(EnvoiTemplateVars.EXPEDITEUR_NOM, envoi.getExpediteur().getPersonne().getNom());
+//        map.put(EnvoiTemplateVars.EXPEDITEUR_PRENOM, envoi.getExpediteur().getPersonne().getPrenom());
+        map.put(EnvoiTemplateVars.EXPEDITEUR_FULL_NAME, getFullName(envoi.getExpediteur().getPersonne()));
+        map.put(EnvoiTemplateVars.EXPEDITEUR_ADRESSE_1, getAdresse1(envoi.getExpediteur().getPersonne()));
+        map.put(EnvoiTemplateVars.EXPEDITEUR_ADRESSE_2, getAdresse2(envoi.getExpediteur().getPersonne()));
         // map.put(EnvoiTemplateVars.EXPEDITEUR_ADRESSE, envoi.getExpediteur().getPersonne().getAdresse());
 
-        map.put(EnvoiTemplateVars.DESTINATAIRE_NOM, envoi.getDestinataire().getPersonne().getNom());
-        map.put(EnvoiTemplateVars.DESTINATAIRE_PRENOM, envoi.getDestinataire().getPersonne().getPrenom());
-        // map.put(EnvoiTemplateVars.DESTINATAIRE_ADRESSE, envoi.getDestinataire().getPersonne().getAdresse());
+//        map.put(EnvoiTemplateVars.DESTINATAIRE_NOM, envoi.getDestinataire().getPersonne().getNom());
+//        map.put(EnvoiTemplateVars.DESTINATAIRE_PRENOM, envoi.getDestinataire().getPersonne().getPrenom());
+        map.put(EnvoiTemplateVars.DESTINATAIRE_FULL_NAME, getFullName(envoi.getDestinataire().getPersonne()));
+        map.put(EnvoiTemplateVars.DESTINATAIRE_ADRESSE_1, getAdresse1(envoi.getDestinataire().getPersonne()));
+        map.put(EnvoiTemplateVars.DESTINATAIRE_ADRESSE_2, getAdresse2(envoi.getDestinataire().getPersonne()));
 
         map.put(EnvoiTemplateVars.COLI_NBR_UNITE, "1");
         map.put(EnvoiTemplateVars.COLI_POIDS, envoi.getColi().getPoids().toString());
@@ -76,9 +90,32 @@ public class GenerationFicheEnvoiAppServiceAppImpl implements GenerationFicheEnv
         map.put(EnvoiTemplateVars.COLI_DESCRIPTION, envoi.getColi().getDescription());
 
 
-        map.put(EnvoiTemplateVars.LIEN_QR_CODE, "C:\\Users\\MediaMonster\\Desktop\\Projets\\spiral-express-backend\\src\\main\\resources\\qrcode\\qrcode-01.png");
+//        map.put(EnvoiTemplateVars.LIEN_QR_CODE, "C:\\Users\\MediaMonster\\Desktop\\Projets\\spiral-express-backend\\src\\main\\resources\\qrcode\\qrcode-01.png");
+        map.put(EnvoiTemplateVars.LIEN_QR_CODE, qrCodeFile.getPath());
         map.put(EnvoiTemplateVars.ENVOI_REFERENCE, envoi.getReference());
 
         return map;
+    }
+
+    private String getFullName(Personne personne) {
+       return new StringBuilder()
+           .append(personne.getNom().toUpperCase())
+           .append(" ")
+           .append(personne.getPrenom().toUpperCase()).toString();
+    }
+
+    private String getAdresse1(Personne personne) {
+        Adresse adresse = personne.getAdresse();
+        return new StringBuilder().append(adresse.getRue().toUpperCase()).toString();
+    }
+
+    private String getAdresse2(Personne personne) {
+        Adresse adresse = personne.getAdresse();
+        return new StringBuilder()
+            .append(adresse.getCodePostal())
+            .append(" ")
+            .append(adresse.getVille().toUpperCase())
+            .append(", ")
+            .append(adresse.getPays()).toString();
     }
 }
