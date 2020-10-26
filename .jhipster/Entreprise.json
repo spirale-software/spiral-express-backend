@@ -2,8 +2,20 @@
   "name": "Entreprise",
   "fields": [
     {
+      "fieldName": "dateCreation",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "dateModification",
+      "fieldType": "ZonedDateTime"
+    },
+    {
       "fieldName": "nom",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "numero",
+      "fieldType": "Integer"
     },
     {
       "fieldName": "actif",

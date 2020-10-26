@@ -6,6 +6,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 
 /**
  * A Entreprise.
@@ -22,8 +23,17 @@ public class Entreprise implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
+    @Column(name = "date_creation")
+    private ZonedDateTime dateCreation;
+
+    @Column(name = "date_modification")
+    private ZonedDateTime dateModification;
+
     @Column(name = "nom")
     private String nom;
+
+    @Column(name = "numero")
+    private Integer numero;
 
     @Column(name = "actif")
     private Boolean actif;
@@ -37,6 +47,32 @@ public class Entreprise implements Serializable {
         this.id = id;
     }
 
+    public ZonedDateTime getDateCreation() {
+        return dateCreation;
+    }
+
+    public Entreprise dateCreation(ZonedDateTime dateCreation) {
+        this.dateCreation = dateCreation;
+        return this;
+    }
+
+    public void setDateCreation(ZonedDateTime dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
+    public ZonedDateTime getDateModification() {
+        return dateModification;
+    }
+
+    public Entreprise dateModification(ZonedDateTime dateModification) {
+        this.dateModification = dateModification;
+        return this;
+    }
+
+    public void setDateModification(ZonedDateTime dateModification) {
+        this.dateModification = dateModification;
+    }
+
     public String getNom() {
         return nom;
     }
@@ -48,6 +84,19 @@ public class Entreprise implements Serializable {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public Entreprise numero(Integer numero) {
+        this.numero = numero;
+        return this;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
     }
 
     public Boolean isActif() {
@@ -85,7 +134,10 @@ public class Entreprise implements Serializable {
     public String toString() {
         return "Entreprise{" +
             "id=" + getId() +
+            ", dateCreation='" + getDateCreation() + "'" +
+            ", dateModification='" + getDateModification() + "'" +
             ", nom='" + getNom() + "'" +
+            ", numero=" + getNumero() +
             ", actif='" + isActif() + "'" +
             "}";
     }

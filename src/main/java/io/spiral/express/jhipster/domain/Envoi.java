@@ -1,5 +1,6 @@
 package io.spiral.express.jhipster.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -48,12 +49,12 @@ public class Envoi implements Serializable {
     @JoinColumn(unique = true)
     private Coli coli;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
+    @JsonIgnoreProperties(value = "envois", allowSetters = true)
     private Client expediteur;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
+    @JsonIgnoreProperties(value = "envois", allowSetters = true)
     private Destinataire destinataire;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

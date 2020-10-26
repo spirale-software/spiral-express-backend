@@ -4,6 +4,8 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import * as moment from 'moment';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
 import { IEntreprise, Entreprise } from 'app/shared/model/entreprise.model';
 import { EntrepriseService } from './entreprise.service';
@@ -17,7 +19,10 @@ export class EntrepriseUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
+    dateCreation: [],
+    dateModification: [],
     nom: [],
+    numero: [],
     actif: [],
   });
 
@@ -25,6 +30,12 @@ export class EntrepriseUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ entreprise }) => {
+      if (!entreprise.id) {
+        const today = moment().startOf('day');
+        entreprise.dateCreation = today;
+        entreprise.dateModification = today;
+      }
+
       this.updateForm(entreprise);
     });
   }
@@ -32,7 +43,10 @@ export class EntrepriseUpdateComponent implements OnInit {
   updateForm(entreprise: IEntreprise): void {
     this.editForm.patchValue({
       id: entreprise.id,
+      dateCreation: entreprise.dateCreation ? entreprise.dateCreation.format(DATE_TIME_FORMAT) : null,
+      dateModification: entreprise.dateModification ? entreprise.dateModification.format(DATE_TIME_FORMAT) : null,
       nom: entreprise.nom,
+      numero: entreprise.numero,
       actif: entreprise.actif,
     });
   }
@@ -55,7 +69,14 @@ export class EntrepriseUpdateComponent implements OnInit {
     return {
       ...new Entreprise(),
       id: this.editForm.get(['id'])!.value,
+      dateCreation: this.editForm.get(['dateCreation'])!.value
+        ? moment(this.editForm.get(['dateCreation'])!.value, DATE_TIME_FORMAT)
+        : undefined,
+      dateModification: this.editForm.get(['dateModification'])!.value
+        ? moment(this.editForm.get(['dateModification'])!.value, DATE_TIME_FORMAT)
+        : undefined,
       nom: this.editForm.get(['nom'])!.value,
+      numero: this.editForm.get(['numero'])!.value,
       actif: this.editForm.get(['actif'])!.value,
     };
   }

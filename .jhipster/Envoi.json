@@ -37,20 +37,18 @@
       "ownerSide": true
     },
     {
-      "relationshipType": "one-to-one",
+      "relationshipType": "many-to-one",
       "otherEntityName": "client",
       "otherEntityRelationshipName": "envoi",
       "relationshipName": "expediteur",
-      "otherEntityField": "id",
-      "ownerSide": true
+      "otherEntityField": "id"
     },
     {
-      "relationshipType": "one-to-one",
+      "relationshipType": "many-to-one",
       "otherEntityName": "destinataire",
       "otherEntityRelationshipName": "envoi",
       "relationshipName": "destinataire",
-      "otherEntityField": "id",
-      "ownerSide": true
+      "otherEntityField": "id"
     }
   ],
   "changelogDate": "20200926055123",

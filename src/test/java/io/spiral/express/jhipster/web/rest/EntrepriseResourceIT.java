@@ -14,8 +14,13 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.ZoneOffset;
+import java.time.ZoneId;
 import java.util.List;
 
+import static io.spiral.express.jhipster.web.rest.TestUtil.sameInstant;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -29,8 +34,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class EntrepriseResourceIT {
 
+    private static final ZonedDateTime DEFAULT_DATE_CREATION = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_DATE_CREATION = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+
+    private static final ZonedDateTime DEFAULT_DATE_MODIFICATION = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_DATE_MODIFICATION = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+
     private static final String DEFAULT_NOM = "AAAAAAAAAA";
     private static final String UPDATED_NOM = "BBBBBBBBBB";
+
+    private static final Integer DEFAULT_NUMERO = 1;
+    private static final Integer UPDATED_NUMERO = 2;
 
     private static final Boolean DEFAULT_ACTIF = false;
     private static final Boolean UPDATED_ACTIF = true;
@@ -54,7 +68,10 @@ public class EntrepriseResourceIT {
      */
     public static Entreprise createEntity(EntityManager em) {
         Entreprise entreprise = new Entreprise()
+            .dateCreation(DEFAULT_DATE_CREATION)
+            .dateModification(DEFAULT_DATE_MODIFICATION)
             .nom(DEFAULT_NOM)
+            .numero(DEFAULT_NUMERO)
             .actif(DEFAULT_ACTIF);
         return entreprise;
     }
@@ -66,7 +83,10 @@ public class EntrepriseResourceIT {
      */
     public static Entreprise createUpdatedEntity(EntityManager em) {
         Entreprise entreprise = new Entreprise()
+            .dateCreation(UPDATED_DATE_CREATION)
+            .dateModification(UPDATED_DATE_MODIFICATION)
             .nom(UPDATED_NOM)
+            .numero(UPDATED_NUMERO)
             .actif(UPDATED_ACTIF);
         return entreprise;
     }
@@ -90,7 +110,10 @@ public class EntrepriseResourceIT {
         List<Entreprise> entrepriseList = entrepriseRepository.findAll();
         assertThat(entrepriseList).hasSize(databaseSizeBeforeCreate + 1);
         Entreprise testEntreprise = entrepriseList.get(entrepriseList.size() - 1);
+        assertThat(testEntreprise.getDateCreation()).isEqualTo(DEFAULT_DATE_CREATION);
+        assertThat(testEntreprise.getDateModification()).isEqualTo(DEFAULT_DATE_MODIFICATION);
         assertThat(testEntreprise.getNom()).isEqualTo(DEFAULT_NOM);
+        assertThat(testEntreprise.getNumero()).isEqualTo(DEFAULT_NUMERO);
         assertThat(testEntreprise.isActif()).isEqualTo(DEFAULT_ACTIF);
     }
 
@@ -125,7 +148,10 @@ public class EntrepriseResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(entreprise.getId().intValue())))
+            .andExpect(jsonPath("$.[*].dateCreation").value(hasItem(sameInstant(DEFAULT_DATE_CREATION))))
+            .andExpect(jsonPath("$.[*].dateModification").value(hasItem(sameInstant(DEFAULT_DATE_MODIFICATION))))
             .andExpect(jsonPath("$.[*].nom").value(hasItem(DEFAULT_NOM)))
+            .andExpect(jsonPath("$.[*].numero").value(hasItem(DEFAULT_NUMERO)))
             .andExpect(jsonPath("$.[*].actif").value(hasItem(DEFAULT_ACTIF.booleanValue())));
     }
     
@@ -140,7 +166,10 @@ public class EntrepriseResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(entreprise.getId().intValue()))
+            .andExpect(jsonPath("$.dateCreation").value(sameInstant(DEFAULT_DATE_CREATION)))
+            .andExpect(jsonPath("$.dateModification").value(sameInstant(DEFAULT_DATE_MODIFICATION)))
             .andExpect(jsonPath("$.nom").value(DEFAULT_NOM))
+            .andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO))
             .andExpect(jsonPath("$.actif").value(DEFAULT_ACTIF.booleanValue()));
     }
     @Test
@@ -164,7 +193,10 @@ public class EntrepriseResourceIT {
         // Disconnect from session so that the updates on updatedEntreprise are not directly saved in db
         em.detach(updatedEntreprise);
         updatedEntreprise
+            .dateCreation(UPDATED_DATE_CREATION)
+            .dateModification(UPDATED_DATE_MODIFICATION)
             .nom(UPDATED_NOM)
+            .numero(UPDATED_NUMERO)
             .actif(UPDATED_ACTIF);
 
         restEntrepriseMockMvc.perform(put("/api/entreprises")
@@ -176,7 +208,10 @@ public class EntrepriseResourceIT {
         List<Entreprise> entrepriseList = entrepriseRepository.findAll();
         assertThat(entrepriseList).hasSize(databaseSizeBeforeUpdate);
         Entreprise testEntreprise = entrepriseList.get(entrepriseList.size() - 1);
+        assertThat(testEntreprise.getDateCreation()).isEqualTo(UPDATED_DATE_CREATION);
+        assertThat(testEntreprise.getDateModification()).isEqualTo(UPDATED_DATE_MODIFICATION);
         assertThat(testEntreprise.getNom()).isEqualTo(UPDATED_NOM);
+        assertThat(testEntreprise.getNumero()).isEqualTo(UPDATED_NUMERO);
         assertThat(testEntreprise.isActif()).isEqualTo(UPDATED_ACTIF);
     }
 

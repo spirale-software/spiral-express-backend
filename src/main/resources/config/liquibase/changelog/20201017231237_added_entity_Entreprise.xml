@@ -15,7 +15,16 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="date_creation" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="date_modification" type="datetime">
+                <constraints nullable="true" />
+            </column>
             <column name="nom" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="numero" type="integer">
                 <constraints nullable="true" />
             </column>
             <column name="actif" type="boolean">
@@ -23,6 +32,8 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
+        <dropDefaultValue tableName="app_entreprise" columnName="date_creation" columnDataType="datetime"/>
+        <dropDefaultValue tableName="app_entreprise" columnName="date_modification" columnDataType="datetime"/>
     </changeSet>
 
     <changeSet id="20201017231237-1-relations" author="jhipster">
@@ -44,7 +55,10 @@
                   separator=";"
                   tableName="app_entreprise">
             <column name="id" type="numeric"/>
+            <column name="date_creation" type="datetime"/>
+            <column name="date_modification" type="datetime"/>
             <column name="nom" type="string"/>
+            <column name="numero" type="numeric"/>
             <column name="actif" type="boolean"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>

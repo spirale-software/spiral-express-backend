@@ -26,7 +26,7 @@ type SelectableEntity = IColi | IClient | IDestinataire;
 export class EnvoiUpdateComponent implements OnInit {
   isSaving = false;
   colis: IColi[] = [];
-  expediteurs: IClient[] = [];
+  clients: IClient[] = [];
   destinataires: IDestinataire[] = [];
 
   editForm = this.fb.group({
@@ -82,49 +82,9 @@ export class EnvoiUpdateComponent implements OnInit {
           }
         });
 
-      this.clientService
-        .query({ filter: 'envoi-is-null' })
-        .pipe(
-          map((res: HttpResponse<IClient[]>) => {
-            return res.body || [];
-          })
-        )
-        .subscribe((resBody: IClient[]) => {
-          if (!envoi.expediteur || !envoi.expediteur.id) {
-            this.expediteurs = resBody;
-          } else {
-            this.clientService
-              .find(envoi.expediteur.id)
-              .pipe(
-                map((subRes: HttpResponse<IClient>) => {
-                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
-                })
-              )
-              .subscribe((concatRes: IClient[]) => (this.expediteurs = concatRes));
-          }
-        });
+      this.clientService.query().subscribe((res: HttpResponse<IClient[]>) => (this.clients = res.body || []));
 
-      this.destinataireService
-        .query({ filter: 'envoi-is-null' })
-        .pipe(
-          map((res: HttpResponse<IDestinataire[]>) => {
-            return res.body || [];
-          })
-        )
-        .subscribe((resBody: IDestinataire[]) => {
-          if (!envoi.destinataire || !envoi.destinataire.id) {
-            this.destinataires = resBody;
-          } else {
-            this.destinataireService
-              .find(envoi.destinataire.id)
-              .pipe(
-                map((subRes: HttpResponse<IDestinataire>) => {
-                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
-                })
-              )
-              .subscribe((concatRes: IDestinataire[]) => (this.destinataires = concatRes));
-          }
-        });
+      this.destinataireService.query().subscribe((res: HttpResponse<IDestinataire[]>) => (this.destinataires = res.body || []));
     });
   }
 

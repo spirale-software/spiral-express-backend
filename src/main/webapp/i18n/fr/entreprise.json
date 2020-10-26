@@ -16,7 +16,10 @@
       "detail": {
         "title": "Entreprise"
       },
+      "dateCreation": "Date Creation",
+      "dateModification": "Date Modification",
       "nom": "Nom",
+      "numero": "Numero",
       "actif": "Actif"
     }
   }

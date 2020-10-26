@@ -75,6 +75,9 @@ relationship OneToOne {
     Partenaire { personne } to Personne
     Destinataire { personne } to Personne
     Envoi { coli } to Coli
+}
+
+relationship ManyToOne {
     Envoi { expediteur } to Client
     Envoi { destinataire } to Destinataire
 }
