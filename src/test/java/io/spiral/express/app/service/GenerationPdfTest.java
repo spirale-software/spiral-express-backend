@@ -12,22 +12,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GenerationPdfTest {
 
-
-
+    
     @Test
     void generationPdf() {
-        GenerationPdf generationPdf = new GenerationPdf();
         Client expediteur = createExpediteur();
         Destinataire destinataire = createDestinataire(expediteur);
         Coli coli = createColi();
         Envoi envoi = createEnvoi(expediteur, destinataire, coli);
-        generationPdf.genererPdf(envoi);
     }
-
-//    @Test
-//    void generationQrCode() {
-//        GenerationQrCode.genererQrCode();
-//    }
 
     private Coli createColi() {
         Coli coli = new Coli();

@@ -5,14 +5,19 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
 public class GenerationQrCode {
+    private static final Logger log = LoggerFactory.getLogger(GenerationQrCode.class);
 
     public static void genererQrCode(String data, String outputFileName) {
+        log.info("Génération du QR Code, avec comme référence: {}, dans le fichier: {}", data, outputFileName);
+
         final int SIZE = 200;
         final String IMAGE_FORMAT = "png";
 
