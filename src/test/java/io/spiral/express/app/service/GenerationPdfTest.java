@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GenerationPdfTest {
 
-    
+
     @Test
     void generationPdf() {
         Client expediteur = createExpediteur();
