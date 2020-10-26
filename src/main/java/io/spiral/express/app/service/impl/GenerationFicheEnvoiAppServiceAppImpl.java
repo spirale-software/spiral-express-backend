@@ -1,12 +1,12 @@
 package io.spiral.express.app.service.impl;
 
+import com.itextpdf.html2pdf.HtmlConverter;
 import io.spiral.express.app.repository.EnvoiAppRepository;
-import io.spiral.express.app.service.GenerationFicheEnvoi;
+import io.spiral.express.app.service.GenerationFicheEnvoiAppService;
 import io.spiral.express.app.service.GenerationQrCode;
 import io.spiral.express.app.service.error.ElementNonExistantException;
 import io.spiral.express.app.utils.EnvoiTemplateVars;
 import io.spiral.express.app.utils.FreemarkerUtils;
-import io.spiral.express.app.utils.PdfFileUtils;
 import io.spiral.express.jhipster.domain.Envoi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ResourceUtils;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -21,12 +22,12 @@ import java.util.Map;
 
 @Service
 @Transactional
-public class GenerationFicheEnvoiAppImpl implements GenerationFicheEnvoi {
+public class GenerationFicheEnvoiAppServiceAppImpl implements GenerationFicheEnvoiAppService {
     private Logger log = LoggerFactory.getLogger(getClass());
 
     private final EnvoiAppRepository envoiAppRepository;
 
-    public GenerationFicheEnvoiAppImpl(EnvoiAppRepository envoiAppRepository) {
+    public GenerationFicheEnvoiAppServiceAppImpl(EnvoiAppRepository envoiAppRepository) {
         this.envoiAppRepository = envoiAppRepository;
     }
 
@@ -40,17 +41,20 @@ public class GenerationFicheEnvoiAppImpl implements GenerationFicheEnvoi {
 
         File file = null;
         try {
-            file = ResourceUtils.getFile("classpath:templates/envoi");
+            file = ResourceUtils.getFile("classpath:templates");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         String fileName = "envoi.ftl";
         String html = FreemarkerUtils.loadFtlHtml(file, fileName, getVariables(envoi));
 
-        String outFile = "envoi.pdf";
-        PdfFileUtils.savePdf(outFile, html);
-
-        return new byte[0];
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        try {
+            HtmlConverter.convertToPdf(html, stream);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return stream.toByteArray();
     }
 
     private Map<String, String> getVariables(Envoi envoi) {

@@ -2,6 +2,7 @@ package io.spiral.express.app.web.rest;
 
 import io.spiral.express.app.dto.EnvoiDTO;
 import io.spiral.express.app.service.EnvoiAppService;
+import io.spiral.express.app.service.GenerationFicheEnvoiAppService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -20,9 +21,12 @@ public class EnvoiAppResource {
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     private final EnvoiAppService envoiAppService;
+    private final GenerationFicheEnvoiAppService generationFicheEnvoiAppService;
 
-    public EnvoiAppResource(EnvoiAppService envoiAppService) {
+    public EnvoiAppResource(EnvoiAppService envoiAppService,
+                            GenerationFicheEnvoiAppService generationFicheEnvoiAppService) {
         this.envoiAppService = envoiAppService;
+        this.generationFicheEnvoiAppService = generationFicheEnvoiAppService;
     }
 
     @PostMapping("/envois")
@@ -59,14 +63,17 @@ public class EnvoiAppResource {
     public ResponseEntity<byte[]> genererFicheEnvoi(@PathVariable Long envoiId) {
         log.info("Requête REST, pour générer la fiche envoi: {}", envoiId);
 
-        Path pdfPath = Paths.get("C:\\Users\\MediaMonster\\Desktop\\Projets\\spiral-express-backend\\envoi.pdf");
+        byte[] bytes = generationFicheEnvoiAppService.genererPdfAsByteArray(envoiId);
 
-        byte[] pdf = null;
-        try {
-           pdf = Files.readAllBytes(pdfPath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return ResponseEntity.ok(pdf);
+
+//        Path pdfPath = Paths.get("C:\\Users\\MediaMonster\\Desktop\\Projets\\spiral-express-backend\\envoi.pdf");
+//
+//        byte[] pdf = null;
+//        try {
+//           pdf = Files.readAllBytes(pdfPath);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        return ResponseEntity.ok(bytes);
     }
  }
