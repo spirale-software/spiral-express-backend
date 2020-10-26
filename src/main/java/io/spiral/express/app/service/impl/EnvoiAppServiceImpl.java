@@ -25,11 +25,14 @@ public class EnvoiAppServiceImpl implements EnvoiAppService {
     private final EnvoiAppRepository envoiAppRepository;
     private final ColiAppService coliAppService;
 
+    private Random random;
+
     public EnvoiAppServiceImpl(EnvoiMapper envoiMapper, EnvoiAppRepository envoiAppRepository,
                                ColiAppService coliAppService) {
         this.envoiMapper = envoiMapper;
         this.envoiAppRepository = envoiAppRepository;
         this.coliAppService = coliAppService;
+        this.random = new Random();
     }
 
     @Override
@@ -46,7 +49,7 @@ public class EnvoiAppServiceImpl implements EnvoiAppService {
         Coli coli = coliAppService.create(dto.getColi());
         Envoi envoi = envoiMapper.toEntity(dto);
         envoi.setColi(coli);
-        envoi.setReference(String.valueOf(new Random().nextLong()));
+        envoi.setReference(getReference());
         envoi.setStatut(StatutEnvoi.PRISE_EN_CHARGE);
         envoi.setDateCreation(ZonedDateTime.now());
         envoi = envoiAppRepository.save(envoi);
@@ -84,5 +87,10 @@ public class EnvoiAppServiceImpl implements EnvoiAppService {
             .findByReference(reference)
             .map(envoiMapper::toDto)
             .orElseThrow(() -> new ElementNonExistantException("Pas d'Envoi avec cette référence: " + reference));
+    }
+
+    private String getReference() {
+        Integer ref = random.nextInt(900000000) + 100000000;
+        return String.valueOf(ref);
     }
 }
